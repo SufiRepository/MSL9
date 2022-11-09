@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'SPMTD') }}</title>
+    <title>{{ config('app.name', 'MSL9') }}</title>
 
     <!-- Fonts -->
     {{-- <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
@@ -44,9 +44,7 @@
     {{-- page level css --}}
     @stack('css')
 
-    <script src="{{ URL::asset('kendo/js/jquery.min.js') }}"></script>
-    <script src="{{ URL::asset('kendo/js/jszip.min.js') }}"></script>
-    <script src="{{ URL::asset('kendo/content/shared/js/console.js') }}"></script>
+    <script src="{{ URL::asset('adminlte3/jquery.min.js') }}"></script>
 
     {{-- BUANG ARROW SEKAT INPUT NUMBER --}}
     <style>
@@ -139,7 +137,7 @@
             <a href="{{ route('dashboard') }}" class="brand-link">
                 <img src="{{ url('images/TDDM.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                     style="opacity: .8">
-                <span class="brand-text font-weight-light">SPMTD</span>
+                <span class="brand-text font-weight-light">MSL9</span>
             </a>
 
             <div class="sidebar">
@@ -176,7 +174,7 @@
         </div>
 
         <footer class="main-footer">
-            <strong>Copyright &copy; 2022 <a href="https://spmtd.mindwave.my">TENTERA DARAT</a>.</strong>
+            <strong>Copyright &copy; 2022 <a href="">SUFI REPO</a>.</strong>
 
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version</b> 1

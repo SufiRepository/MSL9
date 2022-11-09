@@ -81,8 +81,7 @@
                     @csrf
 
                     <div class="input-group mb-3">
-                        <input type="text" name="email" value="{{ old('email') }}"
-                            placeholder="No. Tentera/ No Kad Pengenalan"
+                        <input type="text" name="email" value="{{ old('email') }}" placeholder="E-mel"
                             class="form-control @error('email') is-invalid @enderror" required>
                         <div class="input-group-append">
                             <div class="input-group-text"><span class="fas fa-user"></span></div>
