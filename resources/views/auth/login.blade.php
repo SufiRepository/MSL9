@@ -44,7 +44,7 @@
             /*background-color: #4e73df;*/
             /* background-image: -webkit-gradient(linear, left top, left bottom, color-stop(10%, #4e73df), to(#224abe)); */
             /*background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);*/
-            background-image: url("{{ asset('images') }}/BG.jpg");
+            background-image: url("{{ asset('images') }}/citybg.jpg");
             background-size: cover;
         }
 
@@ -66,7 +66,7 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/') }}" style="color:white;"><b>SISTEM PENGURUSAN MATERIAL TENTERA DARAT</b></a>
+            <a href="{{ url('/') }}" style="color:white;"><b>Management System Laravel 9</b></a>
         </div>
         <!-- /.login-logo -->
 
@@ -125,10 +125,10 @@
                 </form>
 
                 <p class="mb-1">
-                    <a href="{{ route('contactadmin') }}">Lupa Kata Laluan?</a>
+                    {{-- <a href="{{ route('contactadmin') }}">Lupa Kata Laluan?</a> --}}
                 </p>
                 <p class="mb-0">
-                    <a href="{{ route('register') }}" class="text-center">Permohonan Pendaftaran Pengguna</a>
+                    {{-- <a href="{{ route('register') }}" class="text-center">Permohonan Pendaftaran Pengguna</a> --}}
                 </p>
             </div>
             <!-- /.login-card-body -->
