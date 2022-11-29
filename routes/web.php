@@ -34,21 +34,10 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('permissions', PermissionsController::class);
     Route::resource('reports', Reportscontroller::class);
     Route::resource('pasukan', Pasukancontroller::class);
-    Route::resource('orgchart', OrgChartController::class);
-    Route::resource('pangkat', PangkatController::class);
-    Route::resource('jawatan', JawatanController::class);
-    Route::resource('status', StatusController::class);
-    Route::resource('saluran', SaluranController::class);
-
     Route::get('/dashboard/view/{id}',  [HomeController::class, 'carian'] )->name('carian');
 
     //query get user
     Route::get('/users/filter/{id}',  [UsersController::class, 'byFilter'] )->name('byFilter');
-
-    //custom route
-    Route::get('markas/{id}',   [Markascontroller::class, 'create'])    ->name('markascreate');
-    Route::post('markas',       [Markascontroller::class, 'store'])     ->name('markasstore');
-    Route::get('/delete/{id}/{saluran_id}/{matrik_id}',  [OrgMatriksController::class, 'destroy'] )   ->name('deletematrik');
 
     // to update status akaun
     Route::get('/editaktifakaun/{id}',  [UsersController::class, 'editaktifakaun'] )->name('editaktifakaun');
