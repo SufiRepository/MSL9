@@ -47,11 +47,11 @@ class LoginController extends Controller
         }
         // dd($remember);
         $user = User::where('email', $userid)
-            ->orWhere('no_tentera', $userid)
-            ->orWhere('no_ic', $userid)
+            // ->orWhere('no_tentera', $userid)
+            // ->orWhere('no_ic', $userid)
             ->first();
         if($user === null){
-            return redirect('/')->withErrors(['email'=>'No Tentera/ No Kad Pengenalan tidak dijumpai.']);
+            return redirect('/')->withErrors(['email'=>'Emel tidak dijumpai.']);
         }
         // cek status akaun
         if ($user->status_akaun === "Tidak Aktif") {

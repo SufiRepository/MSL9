@@ -44,34 +44,6 @@
                             <p> KEBENARAN </p>
                         </a>
                     </li>
-                    @can('pangkat-list')
-                        <li class="nav-item">
-                            <a href="{{ route('pangkat.index') }}"
-                                class="nav-link @isset($navlink) @if (in_array('pangkat', $navlink)) active @endif @endisset">
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>PANGKAT </p>
-                            </a>
-                        </li>
-                    @endcan
-                    @can('jawatan-list')
-                        <li class="nav-item">
-                            <a href="{{ route('jawatan.index') }}"
-                                class="nav-link @isset($navlink) @if (in_array('jawatan', $navlink)) active @endif @endisset">
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>JAWATAN</p>
-                            </a>
-                        </li>
-                    @endcan
-                    {{-- @can('jawatan-list')
-                        <li class="nav-item">
-                            <a href="{{ route('status.index') }}"
-                                class="nav-link @isset($navlink) @if (in_array('status', $navlink)) active @endif @endisset">
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p> STATUS</p>
-                            </a>
-                        </li>
-                    @endcan --}}
-
                 </ul>
             </li>
         @endcan

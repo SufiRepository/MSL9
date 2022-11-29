@@ -95,21 +95,10 @@ class UsersController extends Controller
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'no_tentera' => ['required', 'string', 'max:255', 'unique:users'],
-            'no_ic' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', 'min:6'],
-
             't_lahir' => ['required'],
             'jantina' => ['required'],
             'no_phone' => ['required'],
-            'pasukan_id' => ['required'],
-            // 'pangkat_id' => ['required'],
-            'agama_id' => ['required'],
-            'jawatan_id' => ['required'],
-            'bangsa_id' => ['required'],
-            'kategori_id' => ['required'],
-            'status_anggota' => ['required'],
-            's_kahwin' => ['required'],
             'roles_id' => ['required'],
         ]);
 
@@ -119,8 +108,6 @@ class UsersController extends Controller
         $newUser->id = $uuid ;
         $newUser->name               = strtoupper($request->input('name'));
         $newUser->email              = $request->input('email');
-        $newUser->no_tentera         = $request->input('no_tentera');
-        $newUser->no_ic              = $request->input('no_ic');
         if(NULL !== $request->input('status_akaun')){
             $newUser-> status_akaun         = $request->input('status_akaun');
         }else{
@@ -137,8 +124,6 @@ class UsersController extends Controller
         $newprofile -> user_id = $uuid ;
         $newprofile -> nama_penuh         = strtoupper($request->input('name'));
         $newprofile -> email              = $request->input('email');
-        $newprofile -> no_tentera         = $request->input('no_tentera');
-        $newprofile -> no_ic              = preg_replace("/[^0-9]/", "", $request->input('no_ic'));
 
         // $newprofile->status_akaun           = "Tidak Aktif";
         if(NULL !== $request->input('status_akaun')){
@@ -148,19 +133,7 @@ class UsersController extends Controller
         }
         $newprofile-> kategori           = $request->input('kategori_id');
         $newprofile-> t_lahir            = $request->input('t_lahir');
-        $newprofile-> jantina            = $request->input('jantina');
         $newprofile-> no_phone           = preg_replace("/[^0-9]/", "", $request->input('no_phone'));
-        //$request->input('no_phone');
-
-        $newprofile-> pasukan_id         = $request->input('pasukan_id');
-        if(NULL !== $request->input('pangkat_id')){
-            $newprofile-> pangkat_id         = $request->input('pangkat_id');
-        }
-        $newprofile-> jawatan_id         = $request->input('jawatan_id');
-        $newprofile-> agama_id           = $request->input('agama_id');
-        $newprofile-> bangsa_id          = $request->input('bangsa_id');
-        $newprofile-> status_anggota     = $request->input('status_anggota');
-        $newprofile-> taraf_kahwin           = $request->input('s_kahwin');
         $newprofile->save();
 
         $newUser->assignRole($request->input('roles_id'));
