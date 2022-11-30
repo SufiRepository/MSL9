@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\UsersController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\RoleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,11 +31,9 @@ Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function() {
     //larevel route
-    Route::resource('roles', RolesController::class);
-    Route::resource('users', UsersController::class);
-    Route::resource('permissions', PermissionsController::class);
-    Route::resource('reports', Reportscontroller::class);
-    Route::resource('pasukan', Pasukancontroller::class);
+    Route::resource('roles', RoleController::class);
+    Route::resource('users', UserController::class);
+    Route::resource('permissions', PermissionController::class);
     Route::get('/dashboard/view/{id}',  [HomeController::class, 'carian'] )->name('carian');
 
     //query get user

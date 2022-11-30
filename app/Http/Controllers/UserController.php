@@ -22,7 +22,7 @@ use App\Models\Pangkat;
 use App\Models\Profile;
 use Carbon\Carbon;
 
-class UsersController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
