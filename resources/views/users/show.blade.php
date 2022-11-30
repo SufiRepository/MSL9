@@ -44,71 +44,6 @@
                         {{ $user->name }}
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Kategori:</strong>
-                        {{ $profile->kategori }}
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Kad Pengenalan:</strong>
-                        {{ $profile->no_ic }}
-                    </div>
-                </div>
-
-                @if ($profile->no_ic != $profile->no_tentera)
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>No Tentera:</strong>
-                            {{ $profile->no_tentera }}
-                        </div>
-                    </div>
-                @endif
-
-                @if ($profile->no_ic != $profile->no_tentera)
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Pangkat:</strong>
-                            {{ $pangkat->pangkat }}
-                        </div>
-                    </div>
-                @endif
-
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Bangsa:</strong>
-                        {{ $profile->bangsa_id }}
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Jantina:</strong>
-                        {{ $profile->jantina }}
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Status Anggota:</strong>
-                        {{ $profile->status_anggota }}
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Agama:</strong>
-                        {{ $agama->agama }}
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Taraf Kahwin:</strong>
-                        {{ $taraf_kahwin->tarafKahwin }}
-                    </div>
-                </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
@@ -133,29 +68,7 @@
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <strong>Pasukan :</strong>
-                        {{ $pasukan->nama }}
-                    </div>
-                </div>
-                @isset($pangkat->pangkat)
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Pangkat:</strong>
-                            {{ $pangkat->pangkat }}
-                        </div>
-                    </div>
-                @endisset
-
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Jawatan:</strong>
-                        {{ $jawatan->jawatan }}
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12">
-                    <div class="form-group">
-                        <strong>Peranan:</strong>
+                        <strong>Roles:</strong>
                         @if (!empty($user->getRoleNames()))
                             @foreach ($user->getRoleNames() as $v)
                                 <label class="badge badge-success">{{ $v }}</label>

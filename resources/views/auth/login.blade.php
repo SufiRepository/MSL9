@@ -66,7 +66,9 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/') }}" style="color:white;"><b>Management System Laravel 9</b></a>
+            <a href="{{ url('/') }}" style="color:white;"><b>MSL9</b></a><br>
+            <a href="{{ url('/') }}" style="color:white;">Management System Laravel 9</a>
+
         </div>
         <!-- /.login-logo -->
 
@@ -74,14 +76,14 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <h5>
-                    <p class="login-box-msg">Log Masuk</p>
+                    <p class="login-box-msg">Login</p>
                 </h5>
 
                 <form method="post" action="{{ route('newlogin') }}">
                     @csrf
 
                     <div class="input-group mb-3">
-                        <input type="text" name="email" value="{{ old('email') }}" placeholder="E-mel"
+                        <input type="text" name="email" value="{{ old('email') }}" placeholder="Email"
                             class="form-control @error('email') is-invalid @enderror" required>
                         <div class="input-group-append">
                             <div class="input-group-text"><span class="fas fa-user"></span></div>
@@ -95,7 +97,7 @@
                     </div>
 
                     <div class="input-group mb-3">
-                        <input type="password" name="password" placeholder="Kata  Laluan"
+                        <input type="password" name="password" placeholder="Password"
                             class="form-control @error('email') is-invalid @enderror" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
@@ -112,12 +114,12 @@
                         <div class="col-6">
                             <div class="icheck-primary">
                                 <input type="checkbox" id="remember" name="remember" value="true">
-                                <label for="remember" style="font-size: 12px;font-weight: normal;">Ingatkan Saya</label>
+                                <label for="remember" style="font-size: 12px;font-weight: normal;">Remember Me</label>
                             </div>
                         </div>
 
                         <div class="col-6">
-                            <button type="submit" class="btn btn-success btn-block">Log Masuk</button>
+                            <button type="submit" class="btn btn-success btn-block">Login</button>
                         </div>
 
                     </div>

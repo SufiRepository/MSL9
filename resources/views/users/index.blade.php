@@ -57,7 +57,6 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Pasukan</th>
                         <th>E-mel</th>
                         <th>Status Akaun</th>
                         <th>Peranan</th>
@@ -70,7 +69,6 @@
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $user->name }}</td>
-                            <td>{{ $user->pasukan_id }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
                                 <button type="button" class="btn btn-secondary" data-toggle="modal"

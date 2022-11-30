@@ -41,18 +41,6 @@ class UserController extends Controller
             ->where('deleted_at','=',NULL)
             ->get();
         // dd($data);
-        $pasukandata = DB::table('og_unit')->get();
-
-        for ($x = 0; $x < count($data); $x++)
-        {
-            for ($y = 0; $y < count($pasukandata); $y++){
-                if($data[$x]->pasukan_id == $pasukandata[$y]->id){
-                    $data[$x]->pasukan_id = $pasukandata[$y]->singkatan;
-                }
-            }
-                //.........
-        }
-        // dd($data);
         $navlink = array('pengurusan_pengguna','pengguna');
         return view('users.index',compact('data'));
     }
@@ -64,15 +52,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        $pangkat = DB::table('pangkat')->get();
-        $pasukan = DB::table('og_unit')->get();
-        $taraf_kahwin = DB::table('lib_taraf_kahwin')->get();
-        $agama = DB::table('lib_agama')->get();
-        $jawatan = DB::table('lib_jawatan')->get();
-
         $roles = Role::all();
         // dd($roles);
-        return view('users.create',compact('roles','pangkat','pasukan','taraf_kahwin','agama','jawatan'));
+        return view('users.create',compact('roles'));
     }
 
     /**
@@ -152,22 +134,10 @@ class UserController extends Controller
     {
         $user = User::find($id);
         $profile = DB::table('profiles')->where("user_id",$id)->first();
-        $pasukan = DB::table('og_unit')->where("id",$profile->pasukan_id)->first();
-        $pangkat = DB::table('pangkat')->where("id_pangkat",$profile->pangkat_id)->first();
-        $taraf_kahwin = DB::table('lib_taraf_kahwin')->where("idTarafKahwin",$profile->taraf_kahwin)->first();
-        $agama = DB::table('lib_agama')->where("idAgama",$profile->agama_id)->first();
-        $jawatan = DB::table('lib_jawatan')->where("id",$profile->jawatan_id)->first();
-
-         //dd($profile);
-
+     
         return view('users.show',compact(
                 'user',
                 'profile',
-                'pasukan',
-                'pangkat',
-                'taraf_kahwin',
-                'agama',
-                'jawatan',
             ));
     }
 
@@ -184,14 +154,9 @@ class UserController extends Controller
         $profile = DB::table('profiles')->where('user_id','=',$id)->first();
         $roles   = Role::all();
         $myroles = $user->getRoleNames();
-        //dd($myroles);
-        $pangkat = DB::table('pangkat')->get();
-        $pasukan = DB::table('og_unit')->get();
-        $taraf_kahwin = DB::table('lib_taraf_kahwin')->get();
-        $agama = DB::table('lib_agama')->get();
-        $jawatan = DB::table('lib_jawatan')->get();
 
-        return view('users.edit',compact('user','profile','roles','myroles','pangkat','pasukan','taraf_kahwin','agama','jawatan'));
+
+        return view('users.edit',compact('user','profile','roles','myroles'));
 
     }
 
