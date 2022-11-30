@@ -13,13 +13,13 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    function __construct()
-    {
-         $this->middleware('permission:permission-list|permission-create|permission-edit|permission-delete', ['only' => ['index','show']]);
-         $this->middleware('permission:permission-create', ['only' => ['create','store']]);
-         $this->middleware('permission:permission-edit', ['only' => ['edit','update']]);
-         $this->middleware('permission:permission-delete', ['only' => ['destroy']]);
-    }
+    // function __construct()
+    // {
+    //      $this->middleware('permission:permission-list|permission-create|permission-edit|permission-delete', ['only' => ['index','show']]);
+    //      $this->middleware('permission:permission-create', ['only' => ['create','store']]);
+    //      $this->middleware('permission:permission-edit', ['only' => ['edit','update']]);
+    //      $this->middleware('permission:permission-delete', ['only' => ['destroy']]);
+    // }
     /**
      * Display a listing of the resource.
      *
@@ -27,9 +27,9 @@ class PermissionController extends Controller
      */
     public function index()
     {
-        $permissions = Permission::latest()->paginate(4);
-        return view('permissions.index',compact('permissions'))
-            ->with('i', (request()->input('page', 1) - 1) * 4);
+        $permissions = Permission::all();
+        return view('permissions.index',compact('permissions'));
+           // ->with('i', (request()->input('page', 1) - 1) * 4);
     }
 
     /**
@@ -56,11 +56,11 @@ class PermissionController extends Controller
         ]);
 
         // dd($request->all());
-        $permission = new Permission();
+        // $permission = new Permission();
 
-        $permission->name = $request->input('name');
-        $permission->guard_name ='web';
-
+        // $permission->name = $request->input('name');
+        // $permission->guard_name ='web';
+        $permission = Permission::create(['name' => $request->input('name')]);
         $permission->save();
         // Permission::create($request->all());
 
