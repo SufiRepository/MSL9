@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Edit Peranan</h1>
+                    <h1 class="m-0">EDIT ROLES</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Role</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">HOME</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">ROLES</a></li>
                         <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </div><!-- /.col -->
@@ -37,7 +37,7 @@
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Kebenaran</h3>
+                <h3 class="card-title">PERMISSIONS</h3>
             </div>
             <div class="card-body">
                 {!! Form::model($role, ['method' => 'PATCH', 'route' => ['roles.update', $role->id]]) !!}

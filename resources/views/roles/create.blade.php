@@ -6,13 +6,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Daftar Peranan</h1>
+                    <h1 class="m-0">CREATE ROLE</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Peranan</a></li>
-                        <li class="breadcrumb-item active">Daftar</li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">HOME</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">ROLE</a></li>
+                        <li class="breadcrumb-item active">CREATE</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -22,43 +22,54 @@
 @endsection
 
 @section('content')
-
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
-
-    {!! Form::open(['route' => 'roles.store', 'method' => 'POST']) !!}
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Name:</strong>
-                {!! Form::text('name', null, ['placeholder' => 'Name', 'class' => 'form-control']) !!}
+    <div class="container-fluid">
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">ROLE</h3>
             </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Kebenaran:</strong>
-                <br />
-                @foreach ($permission as $value)
-                    <label>{{ Form::checkbox('permission[]', $value->id, false, ['class' => 'name']) }}
-                        {{ $value->name }}</label>
-                    <br />
-                @endforeach
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-            <button type="submit" class="btn btn-primary">Daftar</button>
+            <form method="POST" action="/roles">
+                @csrf
+                <div class="card-body">
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                            {{ $error }}
+                        </div>
+                    @endforeach
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>NAME</label>
+                                <input type="text" style="text-transform: uppercase;" class="form-control" name="name"
+                                    id="name" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>PERMISSIONS</label>
+                                <select class="select2" multiple="multiple" data-placeholder="SELECT PERMISSIONS"
+                                    name="permission[]" style="width: 100%" id="permission">
+                                    @foreach ($permission as $rn)
+                                        <option value="{{ $rn->name }}">{{ $rn->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row5 -->
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">CREATE</button>
+                </div>
+            </form>
+            <!-- /.card-header -->
+
         </div>
     </div>
-    {!! Form::close() !!}
-
-
 @endsection

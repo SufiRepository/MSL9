@@ -12,8 +12,8 @@
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;" >
               @csrf
           </form> --}}
-            <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#modal-sm">Log
-                Keluar</button>
+            <button type="button" class="btn btn-block btn-default" data-toggle="modal" data-target="#modal-sm">LOG
+                OUT</button>
         </li>
     </ul>
 
