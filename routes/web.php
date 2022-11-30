@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\ProjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,7 @@ Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 Route::group(['middleware' => ['auth']], function() {
     //larevel route
     Route::resource('roles', RoleController::class);
+    Route::resource('projects', ProjectController::class);
     Route::resource('users', UserController::class);
     Route::resource('permissions', PermissionController::class);
     Route::get('/dashboard/view/{id}',  [HomeController::class, 'carian'] )->name('carian');

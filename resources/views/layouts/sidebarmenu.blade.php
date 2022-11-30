@@ -49,26 +49,26 @@
         @endcan
         {{-- Projects --}}
         <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('projects.index') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>PROJECTS</p>
             </a>
         </li>
         {{-- Projects --}}
         <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('projects.create') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>PROJECT ADD</p>
             </a>
         </li>{{-- Projects --}}
         <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('projects.edit', Auth::user()->id) }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>PROJECT EDIT</p>
             </a>
         </li>{{-- Projects --}}
         <li class="nav-item">
-            <a href="" class="nav-link">
+            <a href="{{ route('projects.show', Auth::user()->id) }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>PROJECT DETAIL</p>
             </a>
