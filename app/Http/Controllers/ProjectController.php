@@ -40,8 +40,21 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         //
-        dd($request);
+        // dd($request);
+        $newProject = new Project();
+        $newProject -> name                  = $request->input('projectname');
+        $newProject -> description           = $request->input('projectdescription');
+        $newProject -> status                = $request->input('projectstatus');
+        //$newProject -> name              = $request->input('clientcompany');
+        //$newProject -> name              = $request->input('projectleader');
+        $newProject -> estimated_budget    = $request->input('estimatedbudget');
+        $newProject -> spent_budget        = $request->input('spentbudget');
+        $newProject -> project_duration      = $request->input('projectduration');
 
+        $newProject->save();
+
+        return redirect()->route('projects.index')
+                        ->with('success','Project created successfully');
     }
 
     /**
