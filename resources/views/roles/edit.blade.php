@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">EDIT ROLES</h1>
+                    <h1 class="m-0">Edit Peranan</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">HOME</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">ROLES</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Role</a></li>
                         <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </div><!-- /.col -->
@@ -22,56 +22,56 @@
 @endsection
 
 @section('content')
-
-    @if (count($errors) > 0)
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">PERMISSIONS</h3>
+                <h3 class="card-title">PERANAN</h3>
             </div>
-            <div class="card-body">
-                {!! Form::model($role, ['method' => 'PATCH', 'route' => ['roles.update', $role->id]]) !!}
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Name:</strong>
-                            {!! Form::text('name', null, ['placeholder' => 'Name', 'class' => 'form-control']) !!}
+            <form method="POST" action="/roles/{{ $role->id }}">
+                @csrf
+                @method('PATCH')
+                <div class="card-body">
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                            {{ $error }}
+                        </div>
+                    @endforeach
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>NAMA</label>
+                                <input type="text" class="form-control" name="name" id="name"
+                                    value="{{ $role->name }}" placeholder="">
+                            </div>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group">
-                            <strong>Permission:</strong>
-                            <br />
-                            @foreach ($permission as $value)
-                                <label>{{ Form::checkbox('permission[]', $value->id, in_array($value->id, $rolePermissions) ? true : false, ['class' => 'name']) }}
-                                    {{ $value->name }}</label>
-                                <br />
-                            @endforeach
+                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Peranan</label>
+                            <select class="select2" multiple="multiple" data-placeholder="Pilih Peranan" name="permission[]"
+                                style="width: 100%" id="permission">
+                                @foreach ($permissions as $permission)
+                                    <option value="{{ $permission->name }}"
+                                        @if ($role->hasPermissionTo($permission->id)) selected="selected" @endif>
+                                        {{ $permission->name }}
+                                    </option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
+                    <!-- /.row5 -->
                 </div>
-                {!! Form::close() !!}
-            </div>
-            <!-- /.card-body -->
-            <div class="card-footer">
-            </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Daftar</button>
+                </div>
+            </form>
             <!-- /.card-header -->
+
         </div>
     </div>
-
-
-
 @endsection
