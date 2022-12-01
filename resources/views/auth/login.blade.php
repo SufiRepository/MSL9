@@ -119,7 +119,7 @@
                         </div>
 
                         <div class="col-6">
-                            <button type="submit" class="btn btn-success btn-block">Login</button>
+                            <button type="submit" class="btn btn-primary btn-block">Login</button>
                         </div>
 
                     </div>

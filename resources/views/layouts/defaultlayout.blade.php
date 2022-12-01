@@ -97,6 +97,10 @@
                 transform: rotate(1turn);
             }
         }
+
+        .main-sidebar {
+            background-color: #1A3731 !important
+        }
     </style>
     <script>
         window.addEventListener("load", () => {
