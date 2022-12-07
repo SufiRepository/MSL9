@@ -114,8 +114,8 @@
                         <div class="row justify-content-center">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Peranan</label>
-                                    <select class="select2" multiple="multiple" data-placeholder="Pilih Peranan"
+                                    <label>Roles</label>
+                                    <select class="select2" multiple="multiple" data-placeholder="Select Roles"
                                         name="roles_id[]" style="width: 100%" id="roles_id">
                                         @foreach ($roles as $rn)
                                             <option value="{{ $rn->name }}"

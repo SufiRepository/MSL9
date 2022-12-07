@@ -60,7 +60,7 @@
                         <th>Pasukan</th>
                         <th>E-mel</th>
                         <th>Status Akaun</th>
-                        <th>Peranan</th>
+                        <th>Roles</th>
                         <th>Login Akhir</th>
                         <th></th>
                     </tr>

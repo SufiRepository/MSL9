@@ -75,18 +75,18 @@
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Padam Peranan</h5>
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Delete Role</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Sahkan padam peranan?
+                                                    Delete role?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Tutup</button>
+                                                        data-dismiss="modal">Close</button>
                                                     <button type="submit" class="btn btn-danger">
                                                         <img src="{{ url('/images/delete.png') }}" width="17"
                                                             height="17" alt="Image" />

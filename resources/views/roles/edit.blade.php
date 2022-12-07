@@ -42,7 +42,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>NAMA</label>
+                                <label>Name</label>
                                 <input type="text" class="form-control" name="name" id="name"
                                     value="{{ $role->name }}" placeholder="">
                             </div>
@@ -51,9 +51,9 @@
                     <!-- /.row -->
                     <div class="row">
                         <div class="col-md-6">
-                            <label>Peranan</label>
-                            <select class="select2" multiple="multiple" data-placeholder="Pilih Peranan" name="permission[]"
-                                style="width: 100%" id="permission">
+                            <label>Role</label>
+                            <select class="select2" multiple="multiple" data-placeholder="Select permission"
+                                name="permission[]" style="width: 100%" id="permission">
                                 @foreach ($permissions as $permission)
                                     <option value="{{ $permission->name }}"
                                         @if ($role->hasPermissionTo($permission->id)) selected="selected" @endif>
