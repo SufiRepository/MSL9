@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->string('id', 36)->default('0')->primary();
             $table->string('name');
-            $table->string('status_akaun', 50);
+            $table->string('acc_status', 50);
             $table->timestamp('last_login');
             $table->integer('status_id')->nullable()->default(0);
             $table->string('email')->unique();
