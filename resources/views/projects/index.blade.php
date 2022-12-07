@@ -76,6 +76,7 @@
                                 </small> --}}
                             </td>
                             <td>
+
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
                                         <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar.png">
@@ -106,21 +107,57 @@
                                 </span>
                             </td>
                             <td class="project-actions text-right">
-                                <a class="btn btn-primary btn-sm" href="{{ route('projects.show', $project->id) }}">
-                                    <i class="fas fa-folder">
-                                    </i>
-                                    View
-                                </a>
-                                <a class="btn btn-info btn-sm" href="{{ route('projects.edit', $project->id) }}">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Edit
-                                </a>
-                                <a class="btn btn-danger btn-sm" href="#">
-                                    <i class="fas fa-trash">
-                                    </i>
-                                    Delete
-                                </a>
+                                <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a class="btn btn-primary btn-sm" href="{{ route('projects.show', $project->id) }}">
+                                        <i class="fas fa-folder">
+                                        </i>
+                                        View
+                                    </a>
+                                    <a class="btn btn-info btn-sm" href="{{ route('projects.edit', $project->id) }}">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" data-toggle="modal"
+                                        data-target="#DeleteAkaunCenter{{ $project->id }}" data-id="{{ $project->id }}">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                    {{-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
+                                        data-target="#DeleteAkaunCenter{{ $project->id }}" data-id="{{ $project->id }}">
+                                    </button> --}}
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="DeleteAkaunCenter{{ $project->id }}" tabindex="-1"
+                                        role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Padam Kebenaran
+                                                    </h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    Sahkan padam kebenaran?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-dismiss="modal">Tutup</button>
+                                                    <button type="submit" class="btn btn-danger">
+                                                        <img src="{{ url('/images/delete.png') }}" width="17"
+                                                            height="17" alt="Image" />
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+
                             </td>
                         </tr>
                     @endforeach

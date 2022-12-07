@@ -6,13 +6,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Daftar Pengguna</h1>
+                    <h1 class="m-0">Create User</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Pengguna</a></li>
-                        <li class="breadcrumb-item active">Daftar</li>
+                        <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
+                        <li class="breadcrumb-item active">Create</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -25,7 +25,7 @@
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Maklumat Pengguna baru</h3>
+                <h3 class="card-title">New User</h3>
             </div>
             <form method="POST" action="/users">
                 @csrf
@@ -41,9 +41,9 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Nama (seperti kad pengenalan)</label>
+                                <label>Name</label>
                                 <input type="text" style="text-transform: uppercase;" class="form-control" name="name"
-                                    id="name" placeholder="ALI BIN ABU">
+                                    id="name" placeholder="">
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                         <div class="col-md-4">
                             <!-- phone mask -->
                             <div class="form-group">
-                                <label>No. Telefon</label>
+                                <label>Phone no</label>
                                 <div class="input-group">
                                     <input type="text" name="no_phone" class="form-control"
                                         data-inputmask="'mask': ['999-999-9999', '999-9999-9999']" data-mask>
@@ -66,16 +66,16 @@
 
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Tarikh Lahir</label>
+                                <label>Date of Birth</label>
                                 <input type="date" class="form-control" name="t_lahir" id="t_lahir" max="2010-01-01"
-                                    placeholder="Tarikh lahir">
+                                    placeholder="">
                             </div>
 
                         </div>
                         <!-- /.col -->
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>E-mel</label>
+                                <label>Email</label>
                                 <div class="input-group">
                                     <input autocomplete="off" type="text" name="email" id="email"
                                         class="form-control input-lg" placeholder="Ali@army.mil.my" name="name" />
@@ -89,14 +89,14 @@
                         <div class="row justify-content-center">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Kata Laluan</label>
+                                    <label>Password</label>
                                     <input type="password" class="form-control" name="password" id="password"
                                         placeholder="Kata Laluan">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Pengesahan Kata Laluan</label>
+                                    <label>Confirm Password</label>
                                     <input type="password" class="form-control" name="password_confirmation"
                                         id="password_confirmation" placeholder="Pengesahan Kata Laluan">
                                 </div>
@@ -110,7 +110,7 @@
                         <div class="row justify-content-center">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Peranan</label>
+                                    <label>Roles</label>
                                     <select class="select2" multiple="multiple" data-placeholder="Pilih Peranan"
                                         name="roles_id[]" style="width: 100%" id="roles_id">
                                         @foreach ($roles as $rn)
@@ -142,7 +142,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Daftar</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </form>
             <!-- /.card-header -->

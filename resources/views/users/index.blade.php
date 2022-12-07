@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Pengguna</h1>
+                    <h1 class="m-0">Users</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Pengguna</li>
+                        <li class="breadcrumb-item active">Users</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -32,22 +32,10 @@
 
     <div class="card">
         <div class="card-header d-flex p-0">
-            <h3 class="card-title p-3">Senarai Pengguna</h3>
+            <h3 class="card-title p-3">Users</h3>
             {{-- <a class="btn btn-success btn-sm p-2" href="{{ route('users.create') }}">Daftar Pengguna Baru</a> --}}
             <ul class="p-2">
-                <a class="btn btn-success" href="{{ route('users.create') }}">Daftar Pengguna</a>
-            </ul>
-            <ul class="nav nav-pills ml-auto p-2">
-                <li class="nav-item"><a class="nav-link {{ Request::segment(3) == 'Semua' ? 'active' : '' }}"
-                        data-toggle="tab" id="buttonSemua">Semua</a></li>
-                <li class="nav-item"><a class="nav-link {{ Request::segment(3) == 'Pendaftaran Baru' ? 'active' : '' }}"
-                        data-toggle="tab" id="buttonPendaftaranBaru">Pendaftaran Baru</a></li>
-                <li class="nav-item"><a class="nav-link {{ Request::segment(3) == 'Aktif' ? 'active' : '' }}"
-                        data-toggle="tab" id="buttonAktif">Aktif</a></li>
-                <li class="nav-item"><a class="nav-link {{ Request::segment(3) == 'Tidak Aktif' ? 'active' : '' }}"
-                        data-toggle="tab" id="buttonTidakAktif">Tidak Aktif</a></li>
-                <li class="nav-item"><a class="nav-link {{ Request::segment(3) == 'Arkib' ? 'active' : '' }}"
-                        data-toggle="tab" id="buttonArkib">Arkib</a></li>
+                <a class="btn btn-success" href="{{ route('users.create') }}">Create User</a>
             </ul>
         </div>
         <!-- /.card-header -->
@@ -56,11 +44,11 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Nama</th>
-                        <th>E-mel</th>
-                        <th>Status Akaun</th>
-                        <th>Peranan</th>
-                        <th>Login Akhir</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Roles</th>
+                        <th>Last Login</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -73,8 +61,7 @@
                             <td>
                                 <button type="button" class="btn btn-secondary" data-toggle="modal"
                                     data-target="#StatusAkaunCenter{{ $user->id }}" data-id="{{ $user->id }}">
-                                    <img src="{{ url('/images/edit.png') }}" width="17" height="17"
-                                        alt="Image" />
+                                    <img src="{{ url('/images/edit.png') }}" width="17" height="17" alt="Image" />
                                 </button>
                                 {{ $user->status_akaun }}
                                 <!-- Modal -->
@@ -83,23 +70,23 @@
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title" id="exampleModalCenterTitle">Status Akaun</h5>
+                                                <h5 class="modal-title" id="exampleModalCenterTitle">Account Status</h5>
                                                 <button type="button" class="close" data-dismiss="modal"
                                                     aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
                                             </div>
                                             <div class="modal-body">
-                                                Tukar status akaun?
+                                                Change account status?
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
-                                                    data-dismiss="modal">Tutup</button>
+                                                    data-dismiss="modal">Close</button>
                                                 <a type="button" class="btn btn-primary"
-                                                    href="{{ route('editaktifakaun', ['id' => $user->id]) }}">Aktif</a>
+                                                    href="{{ route('editaktifakaun', ['id' => $user->id]) }}">Activate</a>
                                                 <a type="button" class="btn btn-warning"
-                                                    href="{{ route('edittidakaktifakaun', ['id' => $user->id]) }}">Nyah
-                                                    Aktif</a>
+                                                    href="{{ route('edittidakaktifakaun', ['id' => $user->id]) }}">
+                                                    Deactivate</a>
                                             </div>
                                         </div>
                                     </div>
@@ -126,8 +113,7 @@
                                     @csrf
                                     @method('DELETE')
                                     <button type="button" class="btn btn-danger" data-toggle="modal"
-                                        data-target="#DeleteAkaunCenter{{ $user->id }}"
-                                        data-id="{{ $user->id }}">
+                                        data-target="#DeleteAkaunCenter{{ $user->id }}" data-id="{{ $user->id }}">
                                         <img src="{{ url('/images/delete.png') }}" width="17" height="17"
                                             alt="Image" />
                                     </button>
@@ -137,18 +123,18 @@
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Padam Akaun</h5>
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Delete Account</h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Sahkan padam akaun?
+                                                    Confirm account deletion?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Tutup</button>
+                                                        data-dismiss="modal">Close</button>
                                                     <button type="submit" class="btn btn-danger">
                                                         <img src="{{ url('/images/delete.png') }}" width="17"
                                                             height="17" alt="Image" />
