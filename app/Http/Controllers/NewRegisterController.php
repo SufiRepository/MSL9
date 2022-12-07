@@ -59,7 +59,7 @@ class NewRegisterController extends Controller
         $newUser->email              = $request->input('email');
         $newUser->no_tentera         = $request->input('no_tentera');
         $newUser->no_ic              = $request->input('no_ic');
-        $newUser->status_akaun       = "Tidak Aktif";
+        $newUser->acc_status         = "Inactive";
         $newUser->password           = Hash::make($request->input('password'));
         $newUser->last_login         = Carbon::now();
         $newUser->save();
@@ -74,7 +74,7 @@ class NewRegisterController extends Controller
         $newprofile -> no_ic              = preg_replace("/[^0-9]/", "", $request->input('no_ic'));
         //$request->input('no_ic');
 
-        $newprofile->status_akaun           = "Tidak Aktif";
+        $newprofile->acc_status           = "Inactive";
 
         $newprofile-> kategori           = $request->input('kategori_id');
         $newprofile-> t_lahir            = $request->input('t_lahir');

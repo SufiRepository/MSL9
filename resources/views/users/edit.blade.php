@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Pengguna</h1>
+                    <h1 class="m-0">User</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Pengguna</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('users.index') }}">Users</a></li>
                         <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </div><!-- /.col -->
@@ -25,7 +25,7 @@
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Maklumat Pengguna</h3>
+                <h3 class="card-title">User</h3>
             </div>
             <form method="POST" action="/users/{{ $user->id }}">
                 @csrf
@@ -42,7 +42,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Nama (seperti kad pengenalan)</label>
+                                <label>Name</label>
                                 <input type="text" style="text-transform: uppercase;" value="{{ $profile->nama_penuh }}"
                                     class="form-control" name="name" id="name" placeholder="ALI BIN ABU">
                             </div>
@@ -93,14 +93,14 @@
                         <div class="row justify-content-center">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Kata Laluan</label>
+                                    <label>Password</label>
                                     <input type="password" class="form-control" name="password" id="password"
                                         placeholder="Kata Laluan">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label>Pengesahan Kata Laluan</label>
+                                    <label>Password Confirmation</label>
                                     <input type="password" class="form-control" name="password_confirmation"
                                         id="password_confirmation" placeholder="Pengesahan Kata Laluan">
                                 </div>
@@ -138,11 +138,11 @@
                                     <label>Status Akaun</label>
                                     <select class="form-control" name="status_akaun" style="width: 100%" id="status_akaun">
                                         <option disabled selected value> -- Pilih Status Akaun -- </option>
-                                        <option value="Aktif"{{ $profile->status_akaun == 'Aktif' ? 'selected' : '' }}>
-                                            Aktif</option>
+                                        <option value="Active"{{ $profile->acc_status == 'Active' ? 'selected' : '' }}>
+                                            Active</option>
                                         <option
-                                            value="Tidak Aktif"{{ $profile->status_akaun == 'Tidak Aktif' ? 'selected' : '' }}>
-                                            Tidak Aktif</option>
+                                            value="Inactive"{{ $profile->acc_status == 'Inactive' ? 'selected' : '' }}>
+                                            Inactive</option>
                                     </select>
                                 </div>
                             </div>

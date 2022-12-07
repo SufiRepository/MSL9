@@ -51,11 +51,11 @@ class LoginController extends Controller
             // ->orWhere('no_ic', $userid)
             ->first();
         if($user === null){
-            return redirect('/')->withErrors(['email'=>'Emel tidak dijumpai.']);
+            return redirect('/')->withErrors(['email'=>'Email not found.']);
         }
         // cek status akaun
-        if ($user->status_akaun === "Tidak Aktif") {
-            return redirect('/')->withErrors(['email'=>'Akaun Ini Belum Diaktifkan. Sila Hubungi Pentadbir Sistem.']);
+        if ($user->acc_status === "Inactive") {
+            return redirect('/')->withErrors(['email'=>'This account is inactive.']);
         }
         $credentials["email"] = $user->email;
         $credentials["password"] = $userpass;
@@ -68,7 +68,7 @@ class LoginController extends Controller
         }else{
             RateLimiter::hit($this->throttleKey(), $seconds = 300);
 
-            return redirect('/')->withErrors(['email'=>'Pengesahan tidak berjaya. Sila isi semula.']);
+            return redirect('/')->withErrors(['email'=>'Login failed. Please try again.']);
         }
     }
     /**

@@ -13,25 +13,14 @@ class Profile extends Model
 
     protected $fillable = [
         'namapenuh',
+        'user_id',
         'email',
-        'no_tentera',
         'no_ic',
         't_lahir',
         'jantina',
         'no_phone',
-        'pasukan_id',
-        'pangkat_id',
-        'status_akaun',
-        'jawatan_id',
-        'agama_id',
-        'bangsa_id',
-        'status_anggota',
-        'status_id',
-        'taraf_berkawin',
+        'acc_status',
     ];
-
-
-    // relationship another model
 
     public function getJawatan()
     {

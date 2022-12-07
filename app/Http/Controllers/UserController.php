@@ -16,9 +16,6 @@ use DB;
 //model
 use App\Models\User;
 use App\Models\Pasukan;
-use App\Models\Status;
-use App\Models\Jawatan;
-use App\Models\Pangkat;
 use App\Models\Profile;
 use Carbon\Carbon;
 
@@ -31,13 +28,7 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-
-        // $data = User::orderBy('id','DESC')->get();
-        // $pasukandata = DB::table('og_unit')->where('user_id','=',$data->id)->first();
-
         $data = User::orderBy('id','DESC')
-            ->join('profiles', 'users.id', '=', 'profiles.user_id')
-            ->select('users.*','profiles.pasukan_id')
             ->where('deleted_at','=',NULL)
             ->get();
         // dd($data);
@@ -91,9 +82,9 @@ class UserController extends Controller
         $newUser->name               = strtoupper($request->input('name'));
         $newUser->email              = $request->input('email');
         if(NULL !== $request->input('status_akaun')){
-            $newUser-> status_akaun         = $request->input('status_akaun');
+            $newUser-> acc_status         = $request->input('status_akaun');
         }else{
-            $newUser->status_akaun       = "Tidak Aktif";
+            $newUser->acc_status       = "Inactive";
         }
         $newUser->password           = Hash::make($request->input('password'));
         $newUser->last_login         = Carbon::now();
@@ -107,11 +98,11 @@ class UserController extends Controller
         $newprofile -> nama_penuh         = strtoupper($request->input('name'));
         $newprofile -> email              = $request->input('email');
 
-        // $newprofile->status_akaun           = "Tidak Aktif";
+        // $newprofile->acc_status           = "Inactive";
         if(NULL !== $request->input('status_akaun')){
-            $newprofile-> status_akaun         = $request->input('status_akaun');
+            $newprofile-> acc_status         = $request->input('status_akaun');
         }else{
-            $newprofile->status_akaun       = "Tidak Aktif";
+            $newprofile->acc_status       = "Inactive";
         }
         $newprofile-> kategori           = $request->input('kategori_id');
         $newprofile-> t_lahir            = $request->input('t_lahir');
@@ -202,9 +193,9 @@ class UserController extends Controller
             $updateUser->password = Hash::make($request->input('password'));
         }
         if(NULL !== $request->input('status_akaun')){
-            $updateUser-> status_akaun         = $request->input('status_akaun');
+            $updateUser-> acc_status         = $request->input('status_akaun');
         }else{
-            $updateUser->status_akaun       = "Tidak Aktif";
+            $updateUser->acc_status       = "Inactive";
         }
         $updateUser->email_verified_at         = Carbon::now();
         $updateUser->update();
@@ -219,20 +210,13 @@ class UserController extends Controller
         $updateprofile-> t_lahir            = $request->input('t_lahir');
         $updateprofile-> jantina            = $request->input('jantina');
         $updateprofile-> no_phone           = preg_replace("/[^0-9]/", "", $request->input('no_phone'));
-        $updateprofile-> status_akaun         = $updateUser->status_akaun;
+        $updateprofile-> acc_status         = $updateUser->acc_status;
         //$request->input('no_phone');
         // if(NULL !== $request->input('status_akaun')){
-        //     $updateprofile-> status_akaun         = $request->input('status_akaun');
+        //     $updateprofile-> acc_status         = $request->input('status_akaun');
         // }else{
-        //     $updateprofile->status_akaun       = "Tidak Aktif";
+        //     $updateprofile->acc_status       = "Inactive";
         // }
-        $updateprofile-> pasukan_id         = $request->input('pasukan_id');
-        $updateprofile-> pangkat_id         = $request->input('pangkat_id');
-        $updateprofile-> jawatan_id         = $request->input('jawatan_id');
-        $updateprofile-> agama_id           = $request->input('agama_id');
-        $updateprofile-> bangsa_id          = $request->input('bangsa_id');
-        $updateprofile-> status_anggota     = $request->input('status_anggota');
-        $updateprofile-> taraf_kahwin       = $request->input('s_kahwin');
         $updateprofile-> update();
 
         //clear roles, then add new roles
@@ -263,7 +247,7 @@ class UserController extends Controller
     {
         $updateUser = User::find($id);
         // dd($updateUser->status_akaun);
-        $updateUser->status_akaun         = "Aktif";
+        $updateUser->acc_status         = "Active";
         $updateUser->update();
         return redirect()->route('users.index')
                         ->with('success','Pengguna updated successfully');
@@ -273,8 +257,8 @@ class UserController extends Controller
     public function edittidakaktifakaun($id)
     {
         $updateUser = User::find($id);
-        // dd($updateUser->status_akaun);
-        $updateUser->status_akaun         = "Tidak Aktif";
+        // dd($updateUser->acc_status);
+        $updateUser->acc_status         = "Inactive";
         $updateUser->update();
         return redirect()->route('users.index')
                         ->with('success','Pengguna updated successfully');

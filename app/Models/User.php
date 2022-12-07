@@ -34,7 +34,7 @@ class User extends Authenticatable
         'no_tentera',
         'no_ic',
         'status_id',
-        'status_akaun',
+        'acc_status',
         'last_login',
         'email_verified_at',
     ];

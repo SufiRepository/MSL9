@@ -63,7 +63,7 @@
                                     data-target="#StatusAkaunCenter{{ $user->id }}" data-id="{{ $user->id }}">
                                     <img src="{{ url('/images/edit.png') }}" width="17" height="17" alt="Image" />
                                 </button>
-                                {{ $user->status_akaun }}
+                                {{ $user->acc_status }}
                                 <!-- Modal -->
                                 <div class="modal fade" id="StatusAkaunCenter{{ $user->id }}" tabindex="-1"
                                     role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">

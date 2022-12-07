@@ -131,8 +131,8 @@
                                     <label>Status Akaun</label>
                                     <select class="form-control" name="status_akaun" style="width: 100%" id="status_akaun">
                                         <option disabled selected value> -- Pilih Status Akaun -- </option>
-                                        <option value="Aktif">Aktif</option>
-                                        <option value="Tidak Aktif">Tidak Aktif</option>
+                                        <option value="Active">Active</option>
+                                        <option value="Inactive">Inactive</option>
                                     </select>
                                 </div>
                             </div>

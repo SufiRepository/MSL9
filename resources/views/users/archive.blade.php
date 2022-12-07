@@ -42,12 +42,12 @@
                         data-toggle="tab" id="buttonSemua">Semua</a></li>
                 <li class="nav-item"><a class="nav-link {{ Request::segment(3) == 'Pendaftaran Baru' ? 'active' : '' }}"
                         data-toggle="tab" id="buttonPendaftaranBaru">Pendaftaran Baru</a></li>
-                <li class="nav-item"><a class="nav-link {{ Request::segment(3) == 'Aktif' ? 'active' : '' }}"
-                        data-toggle="tab" id="buttonAktif">Aktif</a></li>
-                <li class="nav-item"><a class="nav-link {{ Request::segment(3) == 'Tidak Aktif' ? 'active' : '' }}"
-                        data-toggle="tab" id="buttonTidakAktif">Tidak Aktif</a></li>
+                <li class="nav-item"><a class="nav-link {{ Request::segment(3) == 'Active' ? 'active' : '' }}"
+                        data-toggle="tab" id="buttonAktif">Active</a></li>
+                <li class="nav-item"><a class="nav-link {{ Request::segment(3) == 'Inactive' ? 'active' : '' }}"
+                        data-toggle="tab" id="buttonTidakAktif">Inactive</a></li>
                 <li class="nav-item"><a class="nav-link {{ Request::segment(3) == 'Arkib' ? 'active' : '' }}"
-                        data-toggle="tab" id="buttonArkib">Arkib</a></li>
+                        data-toggle="tab" id="buttonArkib">Archive</a></li>
             </ul>
         </div>
         <!-- /.card-header -->
@@ -78,7 +78,7 @@
                                     <img src="{{ url('/images/edit.png') }}" width="17" height="17"
                                         alt="Image" />
                                 </button> --}}
-                                {{ $user->status_akaun }}
+                                {{ $user->acc_status }}
                                 <!-- Modal -->
                                 <div class="modal fade" id="StatusAkaunCenter{{ $user->id }}" tabindex="-1"
                                     role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -98,10 +98,9 @@
                                                 <button type="button" class="btn btn-secondary"
                                                     data-dismiss="modal">Tutup</button>
                                                 <a type="button" class="btn btn-primary"
-                                                    href="{{ route('editaktifakaun', ['id' => $user->id]) }}">Aktif</a>
+                                                    href="{{ route('editaktifakaun', ['id' => $user->id]) }}">Active</a>
                                                 <a type="button" class="btn btn-warning"
-                                                    href="{{ route('edittidakaktifakaun', ['id' => $user->id]) }}">Nyah
-                                                    Aktif</a>
+                                                    href="{{ route('edittidakaktifakaun', ['id' => $user->id]) }}">Inactive</a>
                                             </div>
                                         </div>
                                     </div>
