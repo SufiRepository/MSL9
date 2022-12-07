@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">DASHBOARD</h1>
+                    <h1 class="m-0">EDIT PROJECT</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">HOME</a></li>
-                        <li class="breadcrumb-item active">DASHBOARD</li>
+                        <li class="breadcrumb-item active">PROJECTS</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -38,28 +38,31 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="inputName">Project Name</label>
-                        <input type="text" id="inputName" class="form-control" value="AdminLTE">
+                        <input type="text" id="inputName" class="form-control" value="{{ $project->name }}">
                     </div>
                     <div class="form-group">
                         <label for="inputDescription">Project Description</label>
-                        <textarea id="inputDescription" class="form-control" rows="4">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</textarea>
+                        <textarea id="inputDescription" class="form-control" rows="4">{{ $project->description }}</textarea>
                     </div>
                     <div class="form-group">
                         <label for="inputStatus">Status</label>
                         <select id="inputStatus" class="form-control custom-select">
                             <option disabled>Select one</option>
-                            <option>On Hold</option>
-                            <option>Canceled</option>
-                            <option selected>Success</option>
+                            <option @if ($project->status === 'On Hold') selected="selected" @endif>On Hold</option>
+                            <option @if ($project->status === 'Ongoing') selected="selected" @endif>Ongoing</option>
+                            <option @if ($project->status === 'Canceled') selected="selected" @endif>Canceled</option>
+                            <option @if ($project->status === 'Success') selected="selected" @endif>Success</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="inputClientCompany">Client Company</label>
-                        <input type="text" id="inputClientCompany" class="form-control" value="Deveint Inc">
+                        <input type="text" id="inputClientCompany" class="form-control"
+                            value="{{ $project->client_company }}">
                     </div>
                     <div class="form-group">
                         <label for="inputProjectLeader">Project Leader</label>
-                        <input type="text" id="inputProjectLeader" class="form-control" value="Tony Chicken">
+                        <input type="text" id="inputProjectLeader" class="form-control"
+                            value="{{ $project->project_leader }}">
                     </div>
                 </div>
                 <!-- /.card-body -->
@@ -80,16 +83,18 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="inputEstimatedBudget">Estimated budget</label>
-                        <input type="number" id="inputEstimatedBudget" class="form-control" value="2300" step="1">
+                        <input type="number" id="inputEstimatedBudget" class="form-control"
+                            value="{{ $project->estimated_budget }}" step="1">
                     </div>
                     <div class="form-group">
                         <label for="inputSpentBudget">Total amount spent</label>
-                        <input type="number" id="inputSpentBudget" class="form-control" value="2000" step="1">
+                        <input type="number" id="inputSpentBudget" class="form-control"
+                            value="{{ $project->spent_budget }}" step="1">
                     </div>
                     <div class="form-group">
                         <label for="inputEstimatedDuration">Estimated project duration</label>
-                        <input type="number" id="inputEstimatedDuration" class="form-control" value="20"
-                            step="0.1">
+                        <input type="number" id="inputEstimatedDuration" class="form-control"
+                            value="{{ $project->project_duration }}" step="0.1">
                     </div>
                 </div>
                 <!-- /.card-body -->

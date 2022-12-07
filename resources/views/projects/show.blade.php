@@ -136,17 +136,15 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
-                    <h3 class="text-primary"><i class="fas fa-paint-brush"></i> AdminLTE v3</h3>
-                    <p class="text-muted">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu
-                        stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure
-                        terr.</p>
+                    <h3 class="text-primary"><i class="fas fa-paint-brush"></i>{{ $project->name }}</h3>
+                    <p class="text-muted">{{ $project->description }}</p>
                     <br>
                     <div class="text-muted">
                         <p class="text-sm">Client Company
-                            <b class="d-block">Deveint Inc</b>
+                            <b class="d-block">{{ $project->client_company }}</b>
                         </p>
                         <p class="text-sm">Project Leader
-                            <b class="d-block">Tony Chicken</b>
+                            <b class="d-block">{{ $project->project_leader }}</b>
                         </p>
                     </div>
 

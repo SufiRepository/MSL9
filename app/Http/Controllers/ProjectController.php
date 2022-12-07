@@ -45,8 +45,8 @@ class ProjectController extends Controller
         $newProject -> name                  = $request->input('projectname');
         $newProject -> description           = $request->input('projectdescription');
         $newProject -> status                = $request->input('projectstatus');
-        //$newProject -> name              = $request->input('clientcompany');
-        //$newProject -> name              = $request->input('projectleader');
+        $newProject -> client_company              = $request->input('clientcompany');
+        $newProject -> project_leader              = $request->input('projectleader');
         $newProject -> estimated_budget    = $request->input('estimatedbudget');
         $newProject -> spent_budget        = $request->input('spentbudget');
         $newProject -> project_duration      = $request->input('projectduration');
@@ -66,7 +66,9 @@ class ProjectController extends Controller
     public function show($id)
     {
         //
-        return view('projects.show');
+        $project = Project::find($id);
+        // dd($project);
+        return view('projects.show',compact('project'));
     }
 
     /**
@@ -78,7 +80,9 @@ class ProjectController extends Controller
     public function edit($id)
     {
         //
-        return view('projects.edit');
+        $project = Project::find($id);
+        // dd($project);
+        return view('projects.edit',compact('project'));
     }
 
     /**

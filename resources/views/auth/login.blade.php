@@ -23,10 +23,6 @@
     <!-- overlayScrollbars -->
     <link rel="stylesheet"
         href="{{ URL::asset('adminlte3/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}" />
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{ URL::asset('adminlte3/plugins/daterangepicker/daterangepicker.css') }}" />
-    <!-- summernote -->
-    <link rel="stylesheet" href="{{ URL::asset('adminlte3/plugins/summernote/summernote-bs4.min.css') }}" />
 
     <link rel="stylesheet"
         href="{{ URL::asset('adminlte3/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}" />
@@ -57,7 +53,15 @@
         }
 
         .login-box {
-            width: 500px;
+            width: 700px;
+            height: 500px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
         }
     </style>
 
@@ -66,8 +70,8 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <a href="{{ url('/') }}" style="color:white;"><b>MSL9</b></a><br>
-            <a href="{{ url('/') }}" style="color:white;">Management System Laravel 9</a>
+            <a href="{{ url('/') }}" style="color:white;font-size:90px"><b>MSL9</b></a><br>
+            {{-- <a href="{{ url('/') }}" style="color:white;font-size:50px">Management System Laravel 9</a> --}}
 
         </div>
         <!-- /.login-logo -->
@@ -76,7 +80,7 @@
         <div class="card">
             <div class="card-body login-card-body">
                 <h5>
-                    <p class="login-box-msg">Login</p>
+                    <p class="login-box-msg" style="font-size:30px">Login</p>
                 </h5>
 
                 <form method="post" action="{{ route('newlogin') }}">
