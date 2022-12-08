@@ -25,9 +25,9 @@ Route::get('/', function () {
 Route::get('/dashboard',  [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::post('/newlogin',  [LoginController::class, 'authenticate'])->name('newlogin');
-Route::post('/newregister',  [NewRegisterController::class, 'store'])->name('newregister');
-Route::get('/registersuccess',  [NewRegisterController::class, 'registersuccess'])->name('registersuccess');
-Route::get('/contactadmin',  [NewRegisterController::class, 'contactadmin'])->name('contactadmin');
+//Route::post('/newregister',  [NewRegisterController::class, 'store'])->name('newregister');
+//Route::get('/registersuccess',  [NewRegisterController::class, 'registersuccess'])->name('registersuccess');
+//Route::get('/contactadmin',  [NewRegisterController::class, 'contactadmin'])->name('contactadmin');
 Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function() {
