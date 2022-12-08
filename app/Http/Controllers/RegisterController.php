@@ -17,7 +17,7 @@ use App\Models\Pangkat;
 use App\Models\Profile;
 use Carbon\Carbon;
 
-class NewRegisterController extends Controller
+class RegisterController extends Controller
 {
     public function store(Request $request)
     {

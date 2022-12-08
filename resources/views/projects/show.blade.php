@@ -12,8 +12,9 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">HOME</a></li>
-                        <li class="breadcrumb-item active">PROJECT</li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('projects.index') }}">Projects</a></li>
+                        <li class="breadcrumb-item active">Show</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -44,7 +45,8 @@
                             <div class="info-box bg-light">
                                 <div class="info-box-content">
                                     <span class="info-box-text text-center text-muted">Estimated budget</span>
-                                    <span class="info-box-number text-center text-muted mb-0">2300</span>
+                                    <span
+                                        class="info-box-number text-center text-muted mb-0">{{ $project->estimated_budget }}</span>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +54,8 @@
                             <div class="info-box bg-light">
                                 <div class="info-box-content">
                                     <span class="info-box-text text-center text-muted">Total amount spent</span>
-                                    <span class="info-box-number text-center text-muted mb-0">2000</span>
+                                    <span
+                                        class="info-box-number text-center text-muted mb-0">{{ $project->spent_budget }}</span>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +63,8 @@
                             <div class="info-box bg-light">
                                 <div class="info-box-content">
                                     <span class="info-box-text text-center text-muted">Estimated project duration</span>
-                                    <span class="info-box-number text-center text-muted mb-0">20</span>
+                                    <span
+                                        class="info-box-number text-center text-muted mb-0">{{ $project->project_duration }}</span>
                                 </div>
                             </div>
                         </div>
