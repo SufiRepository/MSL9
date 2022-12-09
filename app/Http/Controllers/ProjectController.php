@@ -41,6 +41,16 @@ class ProjectController extends Controller
     {
         //
         // dd($request);
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+            'status' => ['required', 'string', 'max:255'],
+            // 'client_company' => ['required', 'string', 'max:255'],
+            // 'project_leader' => ['required', 'string', 'max:255'],
+            // 'estimated_budget' => ['required', 'string', 'max:255'],
+            // 'spent_budget' => ['required', 'string', 'max:255'],
+            // 'project_duration' => ['required', 'string', 'max:255'],
+        ]);
         $newProject = new Project();
         $newProject -> name                  = $request->input('projectname');
         $newProject -> description           = $request->input('projectdescription');
