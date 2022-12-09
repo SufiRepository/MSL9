@@ -7,6 +7,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\TaskController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,7 @@ Route::group(['middleware' => ['auth']], function() {
     //larevel route
     Route::resource('roles', RoleController::class);
     Route::resource('projects', ProjectController::class);
+    Route::resource('tasks', TaskController::class);
     Route::resource('users', UserController::class);
     Route::resource('permissions', PermissionController::class);
     Route::get('/dashboard/view/{id}',  [HomeController::class, 'carian'] )->name('carian');

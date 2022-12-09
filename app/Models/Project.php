@@ -19,6 +19,12 @@ class Project extends Model
     protected $fillable = [
         'name',
         'description',
-        'status'
+        'status',
+        'client_company',
+        'project_leader',
+        'estimated_budget',
+        'spent_budget',
+        'project_duration'
     ];
+
 }

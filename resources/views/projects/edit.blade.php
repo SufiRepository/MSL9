@@ -36,34 +36,38 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="form-group">
-                        <label for="inputName">Project Name</label>
-                        <input type="text" id="inputName" class="form-control" value="{{ $project->name }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputDescription">Project Description</label>
-                        <textarea id="inputDescription" class="form-control" rows="4">{{ $project->description }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputStatus">Status</label>
-                        <select id="inputStatus" class="form-control custom-select">
-                            <option disabled>Select one</option>
-                            <option @if ($project->status === 'On Hold') selected="selected" @endif>On Hold</option>
-                            <option @if ($project->status === 'Ongoing') selected="selected" @endif>Ongoing</option>
-                            <option @if ($project->status === 'Canceled') selected="selected" @endif>Canceled</option>
-                            <option @if ($project->status === 'Success') selected="selected" @endif>Success</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="inputClientCompany">Client Company</label>
-                        <input type="text" id="inputClientCompany" class="form-control"
-                            value="{{ $project->client_company }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="inputProjectLeader">Project Leader</label>
-                        <input type="text" id="inputProjectLeader" class="form-control"
-                            value="{{ $project->project_leader }}">
-                    </div>
+                    <form method="POST" action="/projects/{{ $project->id }}">
+                        @csrf
+                        @method('PATCH')
+                        <div class="form-group">
+                            <label for="inputName">Project Name</label>
+                            <input type="text" id="inputName" name="projectname" class="form-control"
+                                value="{{ $project->name }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputDescription">Project Description</label>
+                            <textarea id="inputDescription" name="projectdescription" class="form-control" rows="4">{{ $project->description }}</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputStatus">Status</label>
+                            <select id="inputStatus" name="projectstatus" class="form-control custom-select">
+                                <option disabled>Select one</option>
+                                <option @if ($project->status === 'On Hold') selected="selected" @endif>On Hold</option>
+                                <option @if ($project->status === 'Ongoing') selected="selected" @endif>Ongoing</option>
+                                <option @if ($project->status === 'Canceled') selected="selected" @endif>Canceled</option>
+                                <option @if ($project->status === 'Success') selected="selected" @endif>Success</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputClientCompany">Client Company</label>
+                            <input type="text" id="inputClientCompany" name="clientcompany" class="form-control"
+                                value="{{ $project->client_company }}">
+                        </div>
+                        <div class="form-group">
+                            <label for="inputProjectLeader">Project Leader</label>
+                            <input type="text" id="inputProjectLeader" name="projectleader" class="form-control"
+                                value="{{ $project->project_leader }}">
+                        </div>
                 </div>
                 <!-- /.card-body -->
             </div>
@@ -83,17 +87,17 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="inputEstimatedBudget">Estimated budget</label>
-                        <input type="number" id="inputEstimatedBudget" class="form-control"
+                        <input type="number" id="inputEstimatedBudget" name="estimatedbudget" class="form-control"
                             value="{{ $project->estimated_budget }}" step="1">
                     </div>
                     <div class="form-group">
                         <label for="inputSpentBudget">Total amount spent</label>
-                        <input type="number" id="inputSpentBudget" class="form-control"
+                        <input type="number" id="inputSpentBudget" name="spentbudget" class="form-control"
                             value="{{ $project->spent_budget }}" step="1">
                     </div>
                     <div class="form-group">
                         <label for="inputEstimatedDuration">Estimated project duration</label>
-                        <input type="number" id="inputEstimatedDuration" class="form-control"
+                        <input type="number" id="inputEstimatedDuration" name="projectduration" class="form-control"
                             value="{{ $project->project_duration }}" step="0.1">
                     </div>
                 </div>
@@ -175,5 +179,13 @@
             <!-- /.card -->
         </div>
     </div>
+    <div class="row">
+        <div class="col-12">
+            <a href="#" class="btn btn-secondary">Cancel</a>
+            <input type="submit" value="Update Project" class="btn btn-success float-right">
+        </div>
+    </div>
+    <br>
+    </form>
     <!-- /.content -->
 @endsection

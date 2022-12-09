@@ -107,6 +107,7 @@
                 <input type="submit" value="Create new Project" class="btn btn-success float-right">
             </div>
         </div>
+        <br>
     </form>
     <!-- /.content -->
 @endsection

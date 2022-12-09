@@ -49,5 +49,11 @@
                 <p>PROJECT ADD</p>
             </a>
         </li>{{-- Projects --}}
+        <li class="nav-item">
+            <a href="{{ route('tasks.index') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>Tasks</p>
+            </a>
+        </li>
     </ul>
 </nav>

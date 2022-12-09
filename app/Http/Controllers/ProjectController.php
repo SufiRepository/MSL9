@@ -95,7 +95,18 @@ class ProjectController extends Controller
     public function update(Request $request, $id)
     {
         //
-        dd($request);
+        $updateproject = Project::find($id);
+        $updateproject -> name                  = $request->input('projectname');
+        $updateproject -> description           = $request->input('projectdescription');
+        $updateproject -> status                = $request->input('projectstatus');
+        $updateproject -> client_company              = $request->input('clientcompany');
+        $updateproject -> project_leader              = $request->input('projectleader');
+        $updateproject -> estimated_budget    = $request->input('estimatedbudget');
+        $updateproject -> spent_budget        = $request->input('spentbudget');
+        $updateproject -> project_duration      = $request->input('projectduration');
+        $updateproject->update();
+        //dd($request);
+        return redirect()->route('projects.index')->with('success','Project updated successfully');
     }
 
     /**
