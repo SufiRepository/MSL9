@@ -52,15 +52,15 @@ class PermissionController extends Controller
     {
         request()->validate([
             'name' => 'required',
-            // 'guard_name' => 'required',
+            //'guard_name' => 'required',
         ]);
 
         // dd($request->all());
-        // $permission = new Permission();
+        $permission = new Permission();
 
-        // $permission->name = $request->input('name');
-        // $permission->guard_name ='web';
-        $permission = Permission::create(['name' => $request->input('name')]);
+        $permission->name = $request->input('name');
+        $permission->guard_name ='web';
+        //$permission = Permission::create(['name' => $request->input('name')]);
         $permission->save();
         // Permission::create($request->all());
 
@@ -101,7 +101,7 @@ class PermissionController extends Controller
     {
          request()->validate([
             'name' => 'required',
-            'detail' => 'required',
+            // 'detail' => 'required',
         ]);
 
         $permission->update($request->all());
