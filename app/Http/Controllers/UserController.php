@@ -310,15 +310,6 @@ class UserController extends Controller
             ->select('users.*','profiles.pasukan_id')
             ->where('deleted_at','=',NULL)
             ->get();
-            $pasukandata = DB::table('og_unit')->get();
-            for ($x = 0; $x < count($data); $x++)
-            {
-                for ($y = 0; $y < count($pasukandata); $y++){
-                    if($data[$x]->pasukan_id == $pasukandata[$y]->id){
-                        $data[$x]->pasukan_id = $pasukandata[$y]->singkatan;
-                    }
-                }
-            }
             return view('users.index',compact('data'));
         }else{
             $data = User::orderBy('id','DESC')
@@ -327,15 +318,6 @@ class UserController extends Controller
             ->where('users.status_akaun',$id)
             ->get();
 
-            $pasukandata = DB::table('og_unit')->get();
-            for ($x = 0; $x < count($data); $x++)
-            {
-                for ($y = 0; $y < count($pasukandata); $y++){
-                    if($data[$x]->pasukan_id == $pasukandata[$y]->id){
-                        $data[$x]->pasukan_id = $pasukandata[$y]->singkatan;
-                    }
-                }
-            }
             return view('users.index',compact('data'));
         }
     }

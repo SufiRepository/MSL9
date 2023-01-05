@@ -42,12 +42,12 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/dashboard/view/{id}',  [HomeController::class, 'carian'] )->name('carian');
 
     //query get user
-    Route::get('/users/filter/{id}',  [UsersController::class, 'byFilter'] )->name('byFilter');
+    Route::get('/users/filter/{id}',  [UserController::class, 'byFilter'] )->name('byFilter');
 
     // to update status akaun
-    Route::get('/editaktifakaun/{id}',  [UsersController::class, 'editaktifakaun'] )->name('editaktifakaun');
-    Route::get('/edittidakaktifakaun/{id}',  [UsersController::class, 'edittidakaktifakaun'] )->name('edittidakaktifakaun');
-    Route::get('/userarchive/{id}',  [UsersController::class, 'archiveshow'] )->name('archiveshow');
+    Route::get('/editaktifakaun/{id}',  [UserController::class, 'editaktifakaun'] )->name('editaktifakaun');
+    Route::get('/edittidakaktifakaun/{id}',  [UserController::class, 'edittidakaktifakaun'] )->name('edittidakaktifakaun');
+    Route::get('/userarchive/{id}',  [UserController::class, 'archiveshow'] )->name('archiveshow');
 
     //pasukan edit tak function, jadi ni ganti untuk route pasukan edit
     Route::get('/pasukan/edit/{id}',     [Pasukancontroller::class, 'edit'] ) ->name('pasukanedit');
