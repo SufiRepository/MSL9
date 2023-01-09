@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\User;
 
 class ProjectController extends Controller
 {
@@ -28,7 +29,9 @@ class ProjectController extends Controller
     public function create()
     {
         //
-        return view('projects.create');
+        $users = User::all();
+
+        return view('projects.create',compact('users'));
     }
 
     /**
@@ -42,9 +45,9 @@ class ProjectController extends Controller
         //
         // dd($request);
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
-            'status' => ['required', 'string', 'max:255'],
+            'projectname' => ['required', 'string', 'max:255'],
+            'projectdescription' => ['required', 'string', 'max:255'],
+            'projectstatus' => ['required', 'string', 'max:255'],
             // 'client_company' => ['required', 'string', 'max:255'],
             // 'project_leader' => ['required', 'string', 'max:255'],
             // 'estimated_budget' => ['required', 'string', 'max:255'],
@@ -62,6 +65,9 @@ class ProjectController extends Controller
         $newProject -> project_duration      = $request->input('projectduration');
 
         $newProject->save();
+        //add
+        $newProject->users()->attach($request->input('users_id'));
+
 
         return redirect()->route('projects.index')
                         ->with('success','Project created successfully');

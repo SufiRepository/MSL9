@@ -61,6 +61,15 @@ class User extends Authenticatable
         'id' => 'string',
     ];
 
+    /**
+     * The users that belong to the project.
+     */
+    public function projects()
+    {
+        //return $this->belongsToMany(User::class, 'project_user', 'user_id', 'role_id');
+        return $this->belongsToMany(Project::class, 'project_user');
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
