@@ -17,6 +17,7 @@ class ProjectController extends Controller
     {
         //
         $projects = Project::all();
+        // $projects = Project::with('users')->get();
         //dd($projects);
         return view('projects.index',compact('projects'));
     }

@@ -75,8 +75,16 @@
                                 </small> --}}
                             </td>
                             <td>
+                                @foreach ($project->users as $user)
+                                    {{-- <a>
+                                        {{ isset($user) ? $user->name : '' }}
+                                    </a> --}}
+                                    <a>
+                                        {{ $user->name }},
+                                    </a>
+                                @endforeach
 
-                                <ul class="list-inline">
+                                {{-- <ul class="list-inline">
                                     <li class="list-inline-item">
                                         <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar.png">
                                     </li>
@@ -89,7 +97,7 @@
                                     <li class="list-inline-item">
                                         <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar4.png">
                                     </li>
-                                </ul>
+                                </ul> --}}
                             </td>
                             <td class="project_progress">
                                 <div class="progress progress-sm">
