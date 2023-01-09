@@ -53,17 +53,13 @@ class TaskController extends Controller
             // 'spent_budget' => ['required', 'string', 'max:255'],
             // 'project_duration' => ['required', 'string', 'max:255'],
         ]);
-        $newProject = new Task();
-        $newProject -> name                  = $request->input('projectname');
-        $newProject -> description           = $request->input('projectdescription');
-        $newProject -> status                = $request->input('projectstatus');
-        $newProject -> client_company              = $request->input('clientcompany');
-        $newProject -> project_leader              = $request->input('projectleader');
-        $newProject -> estimated_budget    = $request->input('estimatedbudget');
-        $newProject -> spent_budget        = $request->input('spentbudget');
-        $newProject -> project_duration      = $request->input('projectduration');
+        $newTask = new Task();
+        $newTask -> name                  = $request->input('taskname');
+        $newTask -> description           = $request->input('taskdescription');
+        $newTask -> status                = $request->input('taskstatus');
+     
 
-        $newProject->save();
+        $newTask->save();
         //add
         //$newProject->users()->attach($request->input('users_id'));
 

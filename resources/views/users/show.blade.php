@@ -77,6 +77,14 @@
                     </div>
                 </div>
 
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <div class="form-group">
+                        <strong>Project:</strong>
+                        @foreach ($user->projects as $project)
+                            {{ $project->name }},
+                        @endforeach
+                    </div>
+                </div>
                 {{-- <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
                     <strong>Status:</strong>

@@ -4,9 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\SnapPasukan;
-use App\Models\Pasukan;
-use App\Models\OrgMatriks;
+use App\Models\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -27,8 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        return view('dashboard');
+        $user = Auth::user();
+        return view('dashboard', compact('user'));
     }
 
     public function dashbord()
