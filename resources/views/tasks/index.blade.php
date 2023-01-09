@@ -31,7 +31,6 @@
 
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Task list</h3>
             <a class="btn btn-success btn-sm" href="{{ route('tasks.create') }}">Create Task</a>
         </div>
         <!-- /.card-header -->

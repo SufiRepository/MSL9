@@ -32,7 +32,6 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Projects</h3>
             <a class="btn btn-success btn-sm" href="{{ route('projects.create') }}">Create
                 Projects</a>
 

@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">CREATE PROJECT</h1>
+                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -37,7 +37,7 @@
             <div class="col-md-6">
                 <div class="card card-primary">
                     <div class="card-header">
-                        <h3 class="card-title">General</h3>
+                        <h3 class="card-title">New Project</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -109,7 +109,8 @@
                         </div>
                         <div class="form-group">
                             <label for="inputEstimatedDuration">Estimated project duration</label>
-                            <input type="number" id="inputEstimatedDuration" name="projectduration" class="form-control">
+                            <input type="number" id="inputEstimatedDuration" name="projectduration"
+                                class="form-control">
                         </div>
                     </div>
                     <!-- /.card-body -->

@@ -28,6 +28,9 @@ class TaskController extends Controller
     public function create()
     {
         //
+        $tasks = Task::all();
+
+        return view('tasks.create',compact('tasks'));
     }
 
     /**
@@ -39,6 +42,34 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
+        // dd($request);
+        $request->validate([
+            'taskname' => ['required', 'string', 'max:191'],
+            'taskdescription' => ['required', 'string', 'max:255'],
+            'taskstatus' => ['required', 'string', 'max:255'],
+            // 'client_company' => ['required', 'string', 'max:255'],
+            // 'project_leader' => ['required', 'string', 'max:255'],
+            // 'estimated_budget' => ['required', 'string', 'max:255'],
+            // 'spent_budget' => ['required', 'string', 'max:255'],
+            // 'project_duration' => ['required', 'string', 'max:255'],
+        ]);
+        $newProject = new Task();
+        $newProject -> name                  = $request->input('projectname');
+        $newProject -> description           = $request->input('projectdescription');
+        $newProject -> status                = $request->input('projectstatus');
+        $newProject -> client_company              = $request->input('clientcompany');
+        $newProject -> project_leader              = $request->input('projectleader');
+        $newProject -> estimated_budget    = $request->input('estimatedbudget');
+        $newProject -> spent_budget        = $request->input('spentbudget');
+        $newProject -> project_duration      = $request->input('projectduration');
+
+        $newProject->save();
+        //add
+        //$newProject->users()->attach($request->input('users_id'));
+
+
+        return redirect()->route('tasks.index')
+                        ->with('success','Task created successfully');
     }
 
     /**
@@ -50,6 +81,9 @@ class TaskController extends Controller
     public function show($id)
     {
         //
+        $task = Task::find($id);
+        // dd($project);
+        return view('tasks.show',compact('task'));
     }
 
     /**
@@ -61,6 +95,9 @@ class TaskController extends Controller
     public function edit($id)
     {
         //
+        $task = Task::find($id);
+        // dd($project);
+        return view('tasks.edit',compact('task'));
     }
 
     /**
@@ -73,6 +110,18 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $updateproject = Task::find($id);
+        $updateproject -> name                  = $request->input('projectname');
+        $updateproject -> description           = $request->input('projectdescription');
+        $updateproject -> status                = $request->input('projectstatus');
+        $updateproject -> client_company              = $request->input('clientcompany');
+        $updateproject -> project_leader              = $request->input('projectleader');
+        $updateproject -> estimated_budget    = $request->input('estimatedbudget');
+        $updateproject -> spent_budget        = $request->input('spentbudget');
+        $updateproject -> project_duration      = $request->input('projectduration');
+        $updateproject->update();
+        //dd($request);
+        return redirect()->route('tasks.index')->with('success','Project updated successfully');
     }
 
     /**
@@ -84,5 +133,10 @@ class TaskController extends Controller
     public function destroy($id)
     {
         //
+        $taskdata = Task::find($id);
+
+        $taskdata->delete();
+        return redirect()->route('tasks.index')
+                    ->with('success','Project deleted successfully');
     }
 }
