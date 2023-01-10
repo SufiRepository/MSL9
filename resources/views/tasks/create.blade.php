@@ -71,6 +71,15 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <label>Projects</label>
+                        <select class="form-control custom-select" name="projects_id" style="width: 100%" id="project_id">
+                            <option selected disabled>Select one</option>
+                            @foreach ($projects as $project)
+                                <option value="{{ $project->id }}">{{ $project->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

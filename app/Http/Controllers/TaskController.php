@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Task;
-
+use App\Models\Project;
+use Auth;
 class TaskController extends Controller
 {
     /**
@@ -29,8 +30,9 @@ class TaskController extends Controller
     {
         //
         $tasks = Task::all();
+        $projects = Project::all();
 
-        return view('tasks.create',compact('tasks'));
+        return view('tasks.create',compact('tasks','projects'));
     }
 
     /**
@@ -58,11 +60,9 @@ class TaskController extends Controller
         $newTask -> description           = $request->input('taskdescription');
         $newTask -> status                = $request->input('taskstatus');
      
-
         $newTask->save();
         //add
-        //$newProject->users()->attach($request->input('users_id'));
-
+        $newTask->users()->attach(Auth::user());
 
         return redirect()->route('tasks.index')
                         ->with('success','Task created successfully');
@@ -78,7 +78,8 @@ class TaskController extends Controller
     {
         //
         $task = Task::find($id);
-        // dd($project);
+
+        dd($task);
         return view('tasks.show',compact('task'));
     }
 

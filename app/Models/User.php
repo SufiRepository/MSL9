@@ -70,6 +70,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Project::class, 'project_user');
     }
 
+    public function tasks()
+    {
+        return $this->belongsToMany(Task::class , 'task_user');
+    }
+
     public function getActivitylogOptions(): LogOptions
     {
         return LogOptions::defaults()
