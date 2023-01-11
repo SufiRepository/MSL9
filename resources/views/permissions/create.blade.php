@@ -37,7 +37,7 @@
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Kebenaran</h3>
+                <h3 class="card-title">Permission</h3>
             </div>
             <div class="card-body">
                 <form action="{{ route('permissions.store') }}" method="POST">

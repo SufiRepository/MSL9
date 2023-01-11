@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Your Tasks</h1>
+                    <h1 class="m-0">Your Projects</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Your Tasks</li>
+                        <li class="breadcrumb-item active">Your Projects</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -39,25 +39,25 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Task Name</th>
+                        {{-- <th>Task Name</th> --}}
                         <th>Project Name</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @if ($tasks->isEmpty())
+                    @if ($projects->isEmpty())
                         <tr>
                             <td colspan="2">No Tasks are assigned to any project</td>
                         </tr>
                     @else
-                        @foreach ($tasks as $index => $task)
+                        @foreach ($projects as $index => $project)
                             <tr>
                                 <td>{{ $index + 1 }}</td>
-                                <td>{{ $task->name }}</td>
-                                @if ($task->project_id !== null)
+                                <td>{{ $project->name }}</td>
+                                {{-- @if ($project->project_id !== null)
                                     <td>{{ $task->project->name }}</td>
                                 @else
                                     <td>Not under any project</td>
-                                @endif
+                                @endif --}}
 
                             </tr>
                         @endforeach
