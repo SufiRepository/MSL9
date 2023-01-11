@@ -59,6 +59,7 @@ class TaskController extends Controller
         $newTask -> name                  = $request->input('taskname');
         $newTask -> description           = $request->input('taskdescription');
         $newTask -> status                = $request->input('taskstatus');
+        $newTask -> project_id            = $request->input('project_id');
      
         $newTask->save();
         //add
@@ -135,5 +136,12 @@ class TaskController extends Controller
         $taskdata->delete();
         return redirect()->route('tasks.index')
                     ->with('success','Project deleted successfully');
+    }
+
+    public function tasklist()
+    {
+        $tasks = auth()->user()->tasks()->with('project')->get();
+        //dd($tasks);
+        return view('tasks.tasklist', compact('tasks'));
     }
 }

@@ -46,8 +46,8 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
-                                    Tasks <span class="float-right badge bg-info">5</span>
+                                <a href="{{ url('/tasklist') }}" class="nav-link">
+                                    Tasks <span class="float-right badge bg-info">{{ $user->tasks->count() }}</span>
                                 </a>
                             </li>
                             <li class="nav-item">

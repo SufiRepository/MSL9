@@ -39,6 +39,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('tasks', TaskController::class);
     Route::resource('users', UserController::class);
     Route::resource('permissions', PermissionController::class);
+    Route::get('/tasklist',  [TaskController::class, 'tasklist'] );
+
     Route::get('/dashboard/view/{id}',  [HomeController::class, 'carian'] )->name('carian');
 
     //query get user
