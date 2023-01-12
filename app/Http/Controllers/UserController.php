@@ -56,23 +56,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request);
-        if($request->input('kategori_id') === "Staf"){
-            // THIS IS KEY!
-            // Replacing the old input string with
-            // with an array of ...
-            $k = preg_replace("/[^0-9]/", "", $request->input('no_ic'));
-            $request->merge( array( 'no_tentera' => $k ) );
-       }
-
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', 'min:6'],
-            't_lahir' => ['required'],
-            'jantina' => ['required'],
+            //'t_lahir' => ['required'],
+            //'jantina' => ['required'],
             'no_phone' => ['required'],
-            'roles_id' => ['required'],
+            //'roles_id' => ['required'],
         ]);
 
         //maklumat untuk login
@@ -104,7 +95,6 @@ class UserController extends Controller
         }else{
             $newprofile->acc_status       = "Inactive";
         }
-        $newprofile-> kategori           = $request->input('kategori_id');
         $newprofile-> t_lahir            = $request->input('t_lahir');
         $newprofile-> no_phone           = preg_replace("/[^0-9]/", "", $request->input('no_phone'));
         $newprofile->save();

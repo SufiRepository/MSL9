@@ -31,12 +31,8 @@
     @endif
 
     <div class="card">
-        <div class="card-header d-flex p-0">
-            <h3 class="card-title p-3">Users</h3>
-            {{-- <a class="btn btn-success btn-sm p-2" href="{{ route('users.create') }}">Daftar Pengguna Baru</a> --}}
-            <ul class="p-2">
-                <a class="btn btn-success" href="{{ route('users.create') }}">Create User</a>
-            </ul>
+        <div class="card-header">
+            <a class="btn btn-success" href="{{ route('users.create') }}">Create User</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">

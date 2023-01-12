@@ -78,7 +78,7 @@
                                 <label>Email</label>
                                 <div class="input-group">
                                     <input autocomplete="off" type="text" name="email" id="email"
-                                        class="form-control input-lg" placeholder="Ali@army.mil.my" name="name" />
+                                        class="form-control input-lg" placeholder="Ali@gmail.com" name="name" />
                                 </div>
                             </div>
                         </div>
@@ -91,14 +91,14 @@
                                 <div class="form-group">
                                     <label>Password</label>
                                     <input type="password" class="form-control" name="password" id="password"
-                                        placeholder="Kata Laluan">
+                                        placeholder="Password">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Confirm Password</label>
                                     <input type="password" class="form-control" name="password_confirmation"
-                                        id="password_confirmation" placeholder="Pengesahan Kata Laluan">
+                                        id="password_confirmation" placeholder="Confirm Password">
                                 </div>
                             </div>
                         </div>
@@ -155,17 +155,6 @@
     <!-- InputMask -->
     <script src="{{ URL::asset('adminlte3/plugins/moment/moment.min.js') }}"></script>
     <script src="{{ URL::asset('adminlte3/plugins/inputmask/jquery.inputmask.min.js') }}"></script>
-
-    <script>
-        $(document).ready(function() {
-            $('#kategori_id').on('change.inputtentera', function() {
-                $("#inputtentera").toggle($(this).val() == 'Tentera');
-            }).trigger('change.inputtentera');
-            $('#kategori_id').on('change.inputpangkat', function() {
-                $("#inputpangkat").toggle($(this).val() == 'Tentera');
-            }).trigger('change.inputpangkat');
-        });
-    </script>
 
     <script>
         //Initialize inputmask
