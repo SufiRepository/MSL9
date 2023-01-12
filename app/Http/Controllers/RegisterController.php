@@ -68,7 +68,7 @@ class RegisterController extends Controller
         $newprofile = new Profile();
 
         $newprofile -> user_id = $uuid ;
-        $newprofile -> nama_penuh         = strtoupper($request->input('name'));
+        $newprofile -> name         = strtoupper($request->input('name'));
         $newprofile -> email              = $request->input('email');
         $newprofile -> no_tentera         = $request->input('no_tentera');
         $newprofile -> no_ic              = preg_replace("/[^0-9]/", "", $request->input('no_ic'));

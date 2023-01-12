@@ -95,7 +95,7 @@ class UserController extends Controller
         $newprofile = new Profile();
 
         $newprofile -> user_id = $uuid ;
-        $newprofile -> nama_penuh         = strtoupper($request->input('name'));
+        $newprofile -> name         = strtoupper($request->input('name'));
         $newprofile -> email              = $request->input('email');
 
         // $newprofile->acc_status           = "Inactive";
@@ -172,18 +172,6 @@ class UserController extends Controller
             ]);
             $updateUser->email              = $request->input('email');
         }
-        if($updateUser->no_tentera !== $request->input('no_tentera')){
-            $request->validate([
-                'no_tentera' => ['required', 'string', 'max:255', 'unique:users'],
-            ]);
-            $updateUser->no_tentera         = $request->input('no_tentera');
-        }
-        if($updateUser->no_ic !== preg_replace("/[^0-9]/", "", $request->input('no_ic'))){
-            $request->validate([
-                'no_ic' => ['required', 'string', 'max:255', 'unique:users'],
-            ]);
-            $updateUser->no_ic              = preg_replace("/[^0-9]/", "", $request->input('no_ic'));
-        }
         //dd($request->input('password'));
         if(NULL !== $request->input('password')){
             // dd($request->input('password'));
@@ -202,13 +190,9 @@ class UserController extends Controller
 
         //simpan maklumat profile bukan untuk login
         $updateprofile = Profile::where('user_id','=',$id )->first();
-        $updateprofile -> nama_penuh         = $updateUser->name;
+        $updateprofile -> name         = $updateUser->name;
         $updateprofile -> email              = $request->input('email');
-        $updateprofile -> no_tentera         = $request->input('no_tentera');
-        $updateprofile -> no_ic              = $updateUser->no_ic;
-
         $updateprofile-> t_lahir            = $request->input('t_lahir');
-        $updateprofile-> jantina            = $request->input('jantina');
         $updateprofile-> no_phone           = preg_replace("/[^0-9]/", "", $request->input('no_phone'));
         $updateprofile-> acc_status         = $updateUser->acc_status;
         //$request->input('no_phone');

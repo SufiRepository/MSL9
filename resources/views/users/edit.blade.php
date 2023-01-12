@@ -43,7 +43,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" style="text-transform: uppercase;" value="{{ $profile->nama_penuh }}"
+                                <input type="text" style="text-transform: uppercase;" value="{{ $profile->name }}"
                                     class="form-control" name="name" id="name" placeholder="ALI BIN ABU">
                             </div>
                         </div>

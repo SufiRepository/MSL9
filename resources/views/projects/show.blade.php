@@ -26,6 +26,29 @@
     <!-- Main content -->
     <div class="card">
         <div class="card-header">
+            <h3 class="card-title">Projects Members</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="form-group">
+                    <strong>Name:</strong>
+                    @foreach ($project->users as $user)
+                        {{ $user->name }},
+                    @endforeach
+                    @if ($project->users->isEmpty())
+                        Project has no users
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
             <h3 class="card-title">Projects Detail</h3>
 
             <div class="card-tools">
