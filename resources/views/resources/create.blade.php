@@ -11,7 +11,7 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('tasks.index') }}">Tasks</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('tasks.index') }}">Resources</a></li>
                         <li class="breadcrumb-item active">Create</li>
                     </ol>
                 </div><!-- /.col -->
@@ -37,7 +37,7 @@
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">New Task</h3>
+                <h3 class="card-title">New Resource</h3>
             </div>
             <form method="POST" action="/tasks">
                 @csrf
@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Task name</label>
+                                <label>Name</label>
                                 <input type="text" class="form-control" name="taskname" id="taskname"
                                     placeholder="Name">
                             </div>
@@ -55,26 +55,18 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Task description</label>
+                                <label>Description</label>
                                 <input type="text" class="form-control" name="taskdescription" id="taskdescription"
                                     placeholder="Description">
                             </div>
                         </div>
                     </div>
                     <!-- /.row -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Task status</label>
-                                <input type="text" class="form-control" name="taskstatus" id="taskstatus"
-                                    placeholder="Status">
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="form-group">
                         <label>Projects</label>
-                        <select class="form-control custom-select" name="project_id" style="width: 100%" id="project_id">
-                            <option selected disabled>Select one</option>
+                        <select class="select2" multiple="multiple" data-placeholder="Select Roles" name="projects_id[]"
+                            style="width: 100%" id="projects_id">
                             @foreach ($projects as $project)
                                 <option value="{{ $project->id }}">{{ $project->name }}</option>
                             @endforeach
@@ -91,3 +83,14 @@
         </div>
     </div>
 @endsection
+
+@push('jscript')
+    <!-- InputMask -->
+    <script src="{{ URL::asset('adminlte3/plugins/moment/moment.min.js') }}"></script>
+    <script src="{{ URL::asset('adminlte3/plugins/inputmask/jquery.inputmask.min.js') }}"></script>
+
+    <script>
+        //Initialize inputmask
+        $('[data-mask]').inputmask()
+    </script>
+@endpush

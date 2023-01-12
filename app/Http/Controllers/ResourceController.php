@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Task;
 use App\Models\Project;
+use App\Models\Resource;
 use Auth;
 
 class ResourceController extends Controller
@@ -17,9 +18,9 @@ class ResourceController extends Controller
     public function index()
     {
         //
-        $data = Resource::all();
+        $resources = Resource::all();
         //dd($projects);
-        return view('tasks.index',compact('data'));
+        return view('resources.index',compact('resources'));
     }
 
     /**

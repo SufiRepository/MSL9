@@ -7,12 +7,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Tasks</h1>
+                    <h1 class="m-0">Resources</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Tasks</li>
+                        <li class="breadcrumb-item active">Resources</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -31,7 +31,7 @@
 
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-success btn-sm" href="{{ route('tasks.create') }}">Create Task</a>
+            <a class="btn btn-success btn-sm" href="{{ route('resources.create') }}">Create Resource</a>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -44,26 +44,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $key => $task)
+                    @foreach ($resources as $key => $resource)
                         <tr>
                             <td>{{ $key + 1 }}</td>
-                            <td>{{ $task->name }}</td>
+                            <td>{{ $resource->name }}</td>
                             <td>
-                                <form action="{{ route('tasks.destroy', $task->id) }}" method="POST">
+                                <form action="{{ route('resources.destroy', $resources->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <a class="btn btn-primary btn-sm" href="{{ route('tasks.show', $task->id) }}">
+                                    <a class="btn btn-primary btn-sm" href="{{ route('resources.show', $resource->id) }}">
                                         <i class="fas fa-folder">
                                         </i>
                                         View
                                     </a>
-                                    <a class="btn btn-info btn-sm" href="{{ route('tasks.edit', $task->id) }}">
+                                    <a class="btn btn-info btn-sm" href="{{ route('tasks.edit', $resource->id) }}">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Edit
                                     </a>
                                     <a class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#DeleteAkaunCenter{{ $task->id }}" data-id="{{ $task->id }}">
+                                        data-target="#DeleteAkaunCenter{{ $resource->id }}" data-id="{{ $resource->id }}">
                                         <i class="fas fa-trash">
                                         </i>
                                         Delete
@@ -72,7 +72,7 @@
                                         data-target="#DeleteAkaunCenter{{ $project->id }}" data-id="{{ $project->id }}">
                                     </button> --}}
                                     <!-- Modal -->
-                                    <div class="modal fade" id="DeleteAkaunCenter{{ $task->id }}" tabindex="-1"
+                                    <div class="modal fade" id="DeleteAkaunCenter{{ $resource->id }}" tabindex="-1"
                                         role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">

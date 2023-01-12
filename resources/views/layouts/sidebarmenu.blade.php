@@ -42,11 +42,18 @@
                 <p>PROJECTS</p>
             </a>
         </li>
-        {{-- Projects --}}
+        {{-- Tasks --}}
         <li class="nav-item">
             <a href="{{ route('tasks.index') }}" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>TASKS</p>
+            </a>
+        </li>
+        {{-- Resources --}}
+        <li class="nav-item">
+            <a href="{{ route('resources.index') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>RESOURCES</p>
             </a>
         </li>
     </ul>
