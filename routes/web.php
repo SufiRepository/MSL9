@@ -8,6 +8,7 @@ use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\ResourceController;
 
 
 /*
@@ -38,6 +39,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('projects', ProjectController::class);
     Route::resource('tasks', TaskController::class);
     Route::resource('users', UserController::class);
+    Route::resource('resources', ResourceController::class);
     Route::resource('permissions', PermissionController::class);
     Route::get('/tasklist',  [TaskController::class, 'tasklist'] );
 
