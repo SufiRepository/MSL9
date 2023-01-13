@@ -35,7 +35,7 @@
                         </div>
                         <!-- /.widget-user-image -->
                         <h3 class="widget-user-username">{{ $user->name }}</h3>
-                        <h5 class="widget-user-desc">Lead Developer</h5>
+                        <h5 class="widget-user-desc">Wee Developer</h5>
                     </div>
                     <div class="card-footer p-0">
                         <ul class="nav flex-column">
