@@ -34,7 +34,7 @@ class ResourceController extends Controller
         $tasks = Resource::all();
         $projects = Project::all();
 
-        return view('tasks.create',compact('tasks','projects'));
+        return view('resources.create',compact('tasks','projects'));
     }
 
     /**

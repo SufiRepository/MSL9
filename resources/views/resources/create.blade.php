@@ -62,16 +62,21 @@
                         </div>
                     </div>
                     <!-- /.row -->
-
-                    <div class="form-group">
-                        <label>Projects</label>
-                        <select class="select2" multiple="multiple" data-placeholder="Select Roles" name="projects_id[]"
-                            style="width: 100%" id="projects_id">
-                            @foreach ($projects as $project)
-                                <option value="{{ $project->id }}">{{ $project->name }}</option>
-                            @endforeach
-                        </select>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Projects</label>
+                                <select class="select2" multiple="multiple" data-placeholder="Select Projects"
+                                    name="projects_id[]" style="width: 100%" id="projects_id">
+                                    @foreach ($projects as $project)
+                                        <option value="{{ $project->id }}">{{ $project->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
                     </div>
+
+
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
