@@ -32,7 +32,13 @@
     <div class="card">
         <div class="card-header">
             <a class="btn btn-success btn-sm" href="{{ route('tasks.create') }}">Create Task</a>
+            @if (Auth::user()->hasRole('superadmin') || Auth::user()->hasRole('admin'))
+                <p class="float-right">You are currently seeing all tasks.</p>
+            @else
+                <p class="float-right">You are currently seeing only your tasks.</p>
+            @endif
         </div>
+
         <!-- /.card-header -->
         <div class="card-body">
             <table id="example1" class="table table-bordered table-striped">

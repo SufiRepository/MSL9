@@ -40,7 +40,7 @@
                     <div class="card-footer p-0">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ url('/projects') }}" class="nav-link">
                                     Projects <span
                                         class="float-right badge bg-primary">{{ $user->projects->count() }}</span>
                                 </a>

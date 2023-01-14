@@ -19,7 +19,7 @@ class ResourceController extends Controller
     {
         //
         $resources = Resource::all();
-        //dd($projects);
+        //dd($resources);
         return view('resources.index',compact('resources'));
     }
 
@@ -48,9 +48,9 @@ class ResourceController extends Controller
         //
         // dd($request);
         $request->validate([
-            'taskname' => ['required', 'string', 'max:191'],
-            'taskdescription' => ['required', 'string', 'max:255'],
-            'taskstatus' => ['required', 'string', 'max:255'],
+            'resourcename' => ['required', 'string', 'max:191'],
+            'resourcedescription' => ['required', 'string', 'max:255'],
+            'project_id' => ['required'],
             // 'client_company' => ['required', 'string', 'max:255'],
             // 'project_leader' => ['required', 'string', 'max:255'],
             // 'estimated_budget' => ['required', 'string', 'max:255'],
@@ -58,17 +58,14 @@ class ResourceController extends Controller
             // 'project_duration' => ['required', 'string', 'max:255'],
         ]);
         $newResource = new Resource();
-        $newResource -> name                  = $request->input('taskname');
-        $newResource -> description           = $request->input('taskdescription');
-        $newResource -> status                = $request->input('taskstatus');
-        $newResource -> project_id            = $request->input('project_id');
-     
+        $newResource -> name                  = $request->input('resourcename');
+        $newResource -> description           = $request->input('resourcedescription');     
         $newResource->save();
         //add
-        $newResource->users()->attach(Auth::user());
+        $newResource->projects()->attach($request->input('project_id'));
 
-        return redirect()->route('tasks.index')
-                        ->with('success','Task created successfully');
+        return redirect()->route('resources.index')
+                        ->with('success','Resource created successfully');
     }
 
     /**

@@ -49,7 +49,7 @@
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $resource->name }}</td>
                             <td>
-                                <form action="{{ route('resources.destroy', $resources->id) }}" method="POST">
+                                {{-- <form action="{{ route('resources.destroy', $resources->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <a class="btn btn-primary btn-sm" href="{{ route('resources.show', $resource->id) }}">
@@ -68,11 +68,7 @@
                                         </i>
                                         Delete
                                     </a>
-                                    {{-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#DeleteAkaunCenter{{ $project->id }}" data-id="{{ $project->id }}">
-                                    </button> --}}
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="DeleteAkaunCenter{{ $resource->id }}" tabindex="-1"
+                                    <div class="modal fade" id="DeleteAkaunCenter{{ $resource->name }}" tabindex="-1"
                                         role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
@@ -98,7 +94,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form>
+                                </form> --}}
                             </td>
                         </tr>
                     @endforeach
@@ -116,15 +112,6 @@
                 "autoWidth": true,
                 "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
-            $('#example2').DataTable({
-                "paging": true,
-                "lengthChange": true,
-                "searching": true,
-                "ordering": true,
-                "info": true,
-                "autoWidth": true,
-                "responsive": true,
-            });
         });
     </script>
 @endsection

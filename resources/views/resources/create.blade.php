@@ -39,14 +39,14 @@
             <div class="card-header">
                 <h3 class="card-title">New Resource</h3>
             </div>
-            <form method="POST" action="/tasks">
+            <form method="POST" action="/resources">
                 @csrf
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Name</label>
-                                <input type="text" class="form-control" name="taskname" id="taskname"
+                                <input type="text" class="form-control" name="resourcename" id="resourcename"
                                     placeholder="Name">
                             </div>
                         </div>
@@ -56,23 +56,22 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Description</label>
-                                <input type="text" class="form-control" name="taskdescription" id="taskdescription"
-                                    placeholder="Description">
+                                <input type="text" class="form-control" name="resourcedescription"
+                                    id="resourcedescription" placeholder="Description">
                             </div>
                         </div>
                     </div>
                     <!-- /.row -->
                     <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label>Projects</label>
-                                <select class="select2" multiple="multiple" data-placeholder="Select Projects"
-                                    name="projects_id[]" style="width: 100%" id="projects_id">
-                                    @foreach ($projects as $project)
-                                        <option value="{{ $project->id }}">{{ $project->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                        <div class="col-md-6">
+                            <label>Projects</label>
+                            <select class="form-control custom-select" name="project_id" style="width: 100%"
+                                id="project_id">
+                                <option selected disabled>Select one</option>
+                                @foreach ($projects as $project)
+                                    <option value="{{ $project->id }}">{{ $project->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 

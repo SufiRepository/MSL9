@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Resource extends Model
 {
     use HasFactory, Softdeletes;
+    protected $table = 'resources';
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 
     public function projects()
     {
