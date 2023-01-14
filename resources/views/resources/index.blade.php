@@ -49,7 +49,7 @@
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $resource->name }}</td>
                             <td>
-                                {{-- <form action="{{ route('resources.destroy', $resources->id) }}" method="POST">
+                                <form action="{{ route('resources.destroy', $resource->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <a class="btn btn-primary btn-sm" href="{{ route('resources.show', $resource->id) }}">
@@ -94,7 +94,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </form> --}}
+                                </form>
                             </td>
                         </tr>
                     @endforeach
