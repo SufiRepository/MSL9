@@ -42,8 +42,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>NAME</label>
-                                <input type="text" style="text-transform: uppercase;" class="form-control" name="name"
-                                    id="name" placeholder="">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="">
                             </div>
                         </div>
                     </div>

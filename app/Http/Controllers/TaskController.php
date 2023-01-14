@@ -15,10 +15,13 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
-        $data = Task::all();
-        //dd($projects);
-        return view('tasks.index',compact('data'));
+        $user = Auth::user();
+        if ($user->hasRole('superadmin') || $user->hasRole('admin')) {
+            $tasks = Task::all();
+        } else {
+            $tasks = $user->tasks()->get();
+        }
+        return view('tasks.index',compact('tasks'));
     }
 
     /**
@@ -138,10 +141,4 @@ class TaskController extends Controller
                     ->with('success','Project deleted successfully');
     }
 
-    public function tasklist()
-    {
-        $tasks = auth()->user()->tasks()->with('project')->get();
-        //dd($tasks);
-        return view('tasks.tasklist', compact('tasks'));
-    }
 }

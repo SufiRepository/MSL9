@@ -30,8 +30,6 @@
 
     <div class="card">
         <div class="card-header d-flex p-0">
-            <h3 class="card-title p-3">ROLES</h3>
-            {{-- <a class="btn btn-success btn-sm"  href="{{ route('pasukan.create') }}">Pasukan Baru</a> --}}
             <ul class="p-2">
                 <a class="btn btn-success" href="{{ route('roles.create') }}">CREATE ROLE</a>
             </ul>

@@ -44,7 +44,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($data as $key => $task)
+                    @foreach ($tasks as $key => $task)
                         <tr>
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $task->name }}</td>
