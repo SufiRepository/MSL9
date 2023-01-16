@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Edit Pangkat</h1>
+                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('pangkat.index') }}">Pangkat</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('resources.index') }}">Resources</a></li>
                         <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </div><!-- /.col -->
@@ -37,9 +37,9 @@
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Maklumat Pangkat</h3>
+                <h3 class="card-title">Info</h3>
             </div>
-            <form method="POST" action="/pangkat/{{ $pangkat->id_pangkat }}">
+            <form method="POST" action="/resources/{{ $resource->id }}">
                 @csrf
                 @method('PATCH')
                 <div class="card-body">
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label>Nama</label>
                                 <input type="text" class="form-control" name="nama" placeholder="Nama"
-                                    value="{{ $pangkat->pangkat }}">
+                                    value="{{ $resource->name }}">
                             </div>
                             <!-- /.form-group -->
                         </div>

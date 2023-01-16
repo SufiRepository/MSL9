@@ -83,7 +83,7 @@ class TaskController extends Controller
         //
         $task = Task::find($id);
 
-        dd($task);
+        //dd($task);
         return view('tasks.show',compact('task'));
     }
 
@@ -97,7 +97,7 @@ class TaskController extends Controller
     {
         //
         $task = Task::find($id);
-        // dd($project);
+        //dd($project);
         return view('tasks.edit',compact('task'));
     }
 

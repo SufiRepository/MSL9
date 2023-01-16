@@ -79,8 +79,8 @@ class ResourceController extends Controller
         //
         $resource = Resource::find($id);
 
-        dd($resource);
-        return view('tasks.show',compact('task'));
+        //dd($resource);
+        return view('resources.show',compact('resource'));
     }
 
     /**
@@ -94,7 +94,7 @@ class ResourceController extends Controller
         //
         $resource = Resource::find($id);
         // dd($project);
-        return view('tasks.edit',compact('task'));
+        return view('resources.edit',compact('resource'));
     }
 
     /**

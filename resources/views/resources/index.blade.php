@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Resources</h1>
+                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -57,7 +57,7 @@
                                         </i>
                                         View
                                     </a>
-                                    <a class="btn btn-info btn-sm" href="{{ route('tasks.edit', $resource->id) }}">
+                                    <a class="btn btn-info btn-sm" href="{{ route('resources.edit', $resource->id) }}">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Edit
