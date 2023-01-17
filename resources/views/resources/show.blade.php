@@ -56,9 +56,10 @@
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
                         <strong>Project:</strong>
-                        @foreach ($resource->projects as $project)
+                        {{ $latestProject->name }}
+                        {{-- @foreach ($resource->projects as $project)
                             {{ $project->name }} ,
-                        @endforeach
+                        @endforeach --}}
                     </div>
                 </div>
             </div>

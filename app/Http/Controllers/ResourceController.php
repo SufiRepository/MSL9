@@ -62,7 +62,8 @@ class ResourceController extends Controller
         $newResource -> description           = $request->input('resourcedescription');     
         $newResource->save();
         //add
-        $newResource->projects()->attach($request->input('project_id'));
+        //$newResource->projects()->attach($request->input('project_id'));
+        $newResource->projects()->attach($request->input('project_id'), ['created_at' => now(),'updated_at' => now()]);
 
         return redirect()->route('resources.index')
                         ->with('success','Resource created successfully');
@@ -78,9 +79,10 @@ class ResourceController extends Controller
     {
         //
         $resource = Resource::find($id);
+        $latestProject = $resource->projects()->orderBy('created_at', 'desc')->first();
 
         //dd($resource);
-        return view('resources.show',compact('resource'));
+        return view('resources.show',compact('resource','latestProject'));
     }
 
     /**
@@ -93,8 +95,10 @@ class ResourceController extends Controller
     {
         //
         $resource = Resource::find($id);
+        $projects = Project::all();
+
         // dd($project);
-        return view('resources.edit',compact('resource'));
+        return view('resources.edit',compact('resource','projects'));
     }
 
     /**
@@ -108,17 +112,14 @@ class ResourceController extends Controller
     {
         //
         $updateresource = Resource::find($id);
-        $updateresource -> name                  = $request->input('projectname');
-        $updateresource -> description           = $request->input('projectdescription');
-        $updateresource -> status                = $request->input('projectstatus');
-        $updateresource -> client_company              = $request->input('clientcompany');
-        $updateresource -> project_leader              = $request->input('projectleader');
-        $updateresource -> estimated_budget    = $request->input('estimatedbudget');
-        $updateresource -> spent_budget        = $request->input('spentbudget');
-        $updateresource -> project_duration      = $request->input('projectduration');
+        $updateresource -> name                  = $request->input('resourcename');
+        $updateresource -> description           = $request->input('resourcedescription');
+      
         $updateresource->update();
+        $updateresource->projects()->attach($request->input('project_id'), ['created_at' => now(), 'updated_at' => now()]);
+        //$updateresource->projects()->sync([$request->input('project_id') => ['created_at' => now(), 'updated_at' => now()]]);
         //dd($request);
-        return redirect()->route('tasks.index')->with('success','Project updated successfully');
+        return redirect()->route('resources.index')->with('success','Resource updated successfully');
     }
 
     /**

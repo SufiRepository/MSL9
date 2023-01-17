@@ -8,12 +8,13 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">EDIT PROJECT</h1>
+                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">HOME</a></li>
-                        <li class="breadcrumb-item active">PROJECTS</li>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('projects.index') }}">Projects</a></li>
+                        <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -27,8 +28,7 @@
         <div class="col-md-6">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">General</h3>
-
+                    <h3 class="card-title">Edit Project</h3>
                     <div class="card-tools">
                         <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                             <i class="fas fa-minus"></i>

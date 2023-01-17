@@ -47,8 +47,34 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Nama</label>
-                                <input type="text" class="form-control" name="nama" placeholder="Nama"
+                                <input type="text" class="form-control" name="resourcename" placeholder="Nama"
                                     value="{{ $resource->name }}">
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label>Description</label>
+                                <input type="text" class="form-control" name="resourcedescription" placeholder="Nama"
+                                    value="{{ $resource->description }}">
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label>Project</label>
+                                <select class="form-control" name="project_id" id="project_id">
+                                    @foreach ($projects as $project)
+                                        <option value="{{ $project->id }}"
+                                            {{ $resource->projects->pluck('id')->contains($project->id) ? 'selected' : '' }}>
+                                            {{ $project->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                {{-- <select class="form-control" name="project_id" style="width: 100%" id="status_akaun">
+                                    @foreach ( as )
+                                        
+                                    @endforeach
+                                    <option value="Active"{{ $profile->acc_status == 'Active' ? 'selected' : '' }}>
+                                        Active</option>
+                                
+                                </select> --}}
                             </div>
                             <!-- /.form-group -->
                         </div>
