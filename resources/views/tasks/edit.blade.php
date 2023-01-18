@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Edit Pangkat</h1>
+                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('pangkat.index') }}">Pangkat</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('tasks.index') }}">Tasks</a></li>
                         <li class="breadcrumb-item active">Edit</li>
                     </ol>
                 </div><!-- /.col -->
@@ -37,23 +37,54 @@
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Maklumat Pangkat</h3>
+                <h3 class="card-title">Details</h3>
             </div>
-            <form method="POST" action="/pangkat/{{ $pangkat->id_pangkat }}">
+            <form method="POST" action="/tasks/{{ $task->id }}">
                 @csrf
                 @method('PATCH')
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Nama</label>
-                                <input type="text" class="form-control" name="nama" placeholder="Nama"
-                                    value="{{ $pangkat->pangkat }}">
+                                <label>Task name</label>
+                                <input type="text" class="form-control" name="taskname" id="taskname" placeholder="Name"
+                                    value="{{ $task->name }}">
                             </div>
                             <!-- /.form-group -->
                         </div>
                     </div>
                     <!-- /.row -->
+                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Task description</label>
+                                <input type="text" class="form-control" name="taskdescription" id="taskdescription"
+                                    placeholder="Description" value="{{ $task->description }}">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Task status</label>
+                                <input type="text" class="form-control" name="taskstatus" id="taskstatus"
+                                    placeholder="Status" value="{{ $task->status }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Projects</label>
+                        <select class="form-control custom-select" name="project_id" style="width: 100%" id="project_id">
+                            <option selected disabled>Select one</option>
+                            @foreach ($projects as $project)
+                                <option
+                                    value="{{ $project->id }}"{{ $project->id == $task->project_id ? 'selected' : '' }}>
+                                    {{ $project->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">

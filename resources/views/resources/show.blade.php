@@ -70,4 +70,47 @@
         <!-- /.card-footer-->
     </div>
     <!-- /.card -->
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Resource History</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Time registered</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($resourceProjects as $project)
+                            <tr>
+                                <td>{{ $project->name }}</td>
+                                <td>{{ date('d/m/Y H:i:s', strtotime($project->pivot_created_at)) }}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                @if ($resource->projects->isEmpty())
+                    Project has no users
+                @endif
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            // $('#resourcetable').DataTable();
+            $('#resourcetable').dataTable({
+                /* No ordering applied by DataTables during initialisation */
+                "order": []
+            });
+        });
+    </script>
 @endsection

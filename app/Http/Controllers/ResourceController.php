@@ -7,6 +7,7 @@ use App\Models\Task;
 use App\Models\Project;
 use App\Models\Resource;
 use Auth;
+use DB;
 
 class ResourceController extends Controller
 {
@@ -79,10 +80,23 @@ class ResourceController extends Controller
     {
         //
         $resource = Resource::find($id);
-        $latestProject = $resource->projects()->orderBy('created_at', 'desc')->first();
+        // $latestProject = $resource->projects()->orderBy('created_at', 'desc')->first();
+        $latestProject = DB::table('projects')
+                        ->join('project_resource', 'projects.id', '=', 'project_resource.project_id')
+                        ->select('projects.*')
+                        ->where('project_resource.resource_id', $id)
+                        ->orderBy('project_resource.created_at', 'desc')
+                        ->first();
 
-        //dd($resource);
-        return view('resources.show',compact('resource','latestProject'));
+        $resourceProjects = DB::table('projects')
+                        ->join('project_resource', 'projects.id', '=', 'project_resource.project_id')
+                        ->where('project_resource.resource_id', $id)
+                        ->orderBy('project_resource.created_at', 'desc')
+                        ->select('projects.*','project_resource.created_at as pivot_created_at')
+                        ->get();
+
+        //dd($resourceProjects);
+        return view('resources.show',compact('resource','latestProject','resourceProjects'));
     }
 
     /**

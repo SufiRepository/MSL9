@@ -97,8 +97,9 @@ class TaskController extends Controller
     {
         //
         $task = Task::find($id);
+        $projects = Project::all();
         //dd($project);
-        return view('tasks.edit',compact('task'));
+        return view('tasks.edit',compact('task','projects'));
     }
 
     /**

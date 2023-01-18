@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
+                    <h1 class="m-0">Resources</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -110,8 +110,7 @@
             $("#example1").DataTable({
                 "responsive": true,
                 "lengthChange": false,
-                "autoWidth": true,
-                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+                "autoWidth": true
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
     </script>
