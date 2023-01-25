@@ -8,12 +8,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">PROJECTS</h1>
+                    <h1 class="m-0">CALENDARS</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">HOME</a></li>
-                        <li class="breadcrumb-item active">PROJECTS</li>
+                        <li class="breadcrumb-item active">CALENDARS</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -32,8 +32,8 @@
     <!-- Default box -->
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-success btn-sm" href="{{ route('projects.create') }}">Create
-                Projects</a>
+            {{-- <a class="btn btn-success btn-sm" href="{{ route('projects.create') }}">Create
+                Projects</a> --}}
 
             <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
@@ -42,131 +42,45 @@
             </div>
         </div>
         <div class="card-body">
-            <table id="projecttable" class="table table-bordered table-hover">
-                <thead>
-                    <tr>
-                        <th style="width: 20%">
-                            Project Name
-                        </th>
-                        <th style="width: 30%">
-                            Team Members
-                        </th>
-                        <th>
-                            Project Progress
-                        </th>
-                        <th style="width: 8%" class="text-center">
-                            Status
-                        </th>
-                        <th style="width: 20%">
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($projects as $key => $project)
-                        <tr>
-                            <td>
-                                <a>
-                                    {{ $project->name }}
-                                </a>
-                                {{-- <br />
-                                <small>
-                                    Created 01.01.2019
-                                </small> --}}
-                            </td>
-                            <td>
-                                @foreach ($project->users as $user)
-                                    <a href="/users/{{ $user->id }}">
-                                        {{ $user->name }},
-                                    </a>
-                                @endforeach
-                            </td>
-                            <td class="project_progress">
-                                <div class="progress progress-sm">
-                                    <div class="progress-bar bg-green" role="progressbar" aria-valuenow="57"
-                                        aria-valuemin="0" aria-valuemax="100" style="width: 57%">
-                                    </div>
-                                </div>
-                                <small>
-                                    57% Complete
-                                </small>
-                            </td>
-                            <td class="project-state">
-                                <span class="badge badge-success"> {{ $project->status }}
-                                </span>
-                            </td>
-                            <td class="project-actions text-right">
-                                <form action="{{ route('projects.destroy', $project->id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
-                                    <a class="btn btn-primary btn-sm" href="{{ route('projects.show', $project->id) }}">
-                                        <i class="fas fa-folder">
-                                        </i>
-                                        View
-                                    </a>
-                                    <a class="btn btn-info btn-sm" href="{{ route('projects.edit', $project->id) }}">
-                                        <i class="fas fa-pencil-alt">
-                                        </i>
-                                        Edit
-                                    </a>
-                                    <a class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#DeleteAkaunCenter{{ $project->id }}" data-id="{{ $project->id }}">
-                                        <i class="fas fa-trash">
-                                        </i>
-                                        Delete
-                                    </a>
-                                    {{-- <button type="button" class="btn btn-danger btn-sm" data-toggle="modal"
-                                        data-target="#DeleteAkaunCenter{{ $project->id }}" data-id="{{ $project->id }}">
-                                    </button> --}}
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="DeleteAkaunCenter{{ $project->id }}" tabindex="-1"
-                                        role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Delete Project
-                                                    </h5>
-                                                    <button type="button" class="close" data-dismiss="modal"
-                                                        aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Confirm delete project?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary"
-                                                        data-dismiss="modal">Tutup</button>
-                                                    <button type="submit" class="btn btn-danger">
-                                                        <img src="{{ url('/images/delete.png') }}" width="17"
-                                                            height="17" alt="Image" />
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
+            <div id='calendar'></div>
 
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
         </div>
         <!-- /.card-body -->
     </div>
     <!-- /.card -->
     <!-- /.content -->
     <script>
-        $(function() {
-            $('#projecttable').DataTable({
-                "paging": true,
-                "lengthChange": false,
-                "searching": false,
-                "ordering": true,
-                "info": true,
-                "autoWidth": false,
-                "responsive": true,
+        var tasks = [{
+                title: 'Task 1',
+                start: '2023-01-01',
+                end: '2023-01-21'
+            },
+            {
+                title: 'Task 2',
+                start: '2023-01-02',
+                end: '2023-01-08'
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                // initialDate: '2023-02-12',
+                nowIndicator: true,
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+                },
+                navLinks: true, // can click day/week names to navigate views
+                editable: true,
+                selectable: true,
+                selectMirror: true,
+                dayMaxEvents: true, // allow "more" link when too many events
+                events: tasks,
+                initialView: 'dayGridMonth'
             });
+            calendar.render();
         });
     </script>
 @endsection
