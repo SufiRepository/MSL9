@@ -56,8 +56,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Task description</label>
-                                <input type="text" class="form-control" name="taskdescription" id="taskdescription"
-                                    placeholder="Description">
+                                <textarea type="text" class="form-control" name="taskdescription" id="taskdescription" placeholder="Description"></textarea>
                             </div>
                         </div>
                     </div>

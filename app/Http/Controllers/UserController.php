@@ -198,7 +198,7 @@ class UserController extends Controller
         $updateUser->assignRole($request->input('roles_id'));
 
         return redirect()->route('users.index')
-                        ->with('success','Pengguna updated successfully');
+                        ->with('success','User updated successfully');
     }
 
     /**
@@ -224,7 +224,7 @@ class UserController extends Controller
         $updateUser->acc_status         = "Active";
         $updateUser->update();
         return redirect()->route('users.index')
-                        ->with('success','Pengguna updated successfully');
+                        ->with('success','User updated successfully');
 
     }
 
@@ -235,7 +235,7 @@ class UserController extends Controller
         $updateUser->acc_status         = "Inactive";
         $updateUser->update();
         return redirect()->route('users.index')
-                        ->with('success','Pengguna updated successfully');
+                        ->with('success','User updated successfully');
 
     }
 

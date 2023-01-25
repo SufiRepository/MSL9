@@ -90,7 +90,7 @@
                         Permohonan Pendaftaran Anggota/Pengguna Sistem.
                       </h3> --}}
                         <h5>
-                            <p class="card-title">Pendaftaran Pengguna</p>
+                            <p class="card-title">Register User</p>
                         </h5>
                     </div>
                     <!-- /.card-header -->
