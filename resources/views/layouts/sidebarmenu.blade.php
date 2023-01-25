@@ -56,5 +56,12 @@
                 <p>RESOURCES</p>
             </a>
         </li>
+        {{-- Resources --}}
+        <li class="nav-item">
+            <a href="{{ route('calendars.index') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>CALENDAR</p>
+            </a>
+        </li>
     </ul>
 </nav>

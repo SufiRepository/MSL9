@@ -9,6 +9,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ResourceController;
+use App\Http\Controllers\CalendarController;
 
 
 /*
@@ -41,6 +42,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', UserController::class);
     Route::resource('resources', ResourceController::class);
     Route::resource('permissions', PermissionController::class);
+    Route::resource('calendars', CalendarController::class);
     Route::get('/tasklist',  [TaskController::class, 'tasklist'] );
 
     Route::get('/dashboard/view/{id}',  [HomeController::class, 'carian'] )->name('carian');

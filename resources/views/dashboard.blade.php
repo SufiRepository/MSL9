@@ -101,7 +101,7 @@
                     <!-- /.card-header -->
                     <div class="card-body">
                         <!--The calendar -->
-                        <div id="calendar" style="width: 100%"></div>
+                        {{-- <div id="calendar" style="width: 100%"></div> --}}
                     </div>
                     <!-- /.card-body -->
                 </div>
@@ -110,18 +110,31 @@
             <!-- ./col -->
         </div>
         <div class="row">
-            <div class="col-lg-3 col-6">
-
+            <div class="card">
+                <div class="col-12">
+                    <div id='calendar'></div>
+                </div>
             </div>
+
         </div>
     </div>
     <!-- /.content -->
-    <script type="text/javascript">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth'
+            });
+            calendar.render();
+        });
+    </script>
+
+    {{-- <script type="text/javascript">
         $(function() {
             $('#calendar').datetimepicker({
                 format: 'L',
                 inline: true
             })
         })
-    </script>
+    </script> --}}
 @endsection

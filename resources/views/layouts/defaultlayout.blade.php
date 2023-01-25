@@ -45,6 +45,7 @@
     @stack('css')
 
     <script src="{{ URL::asset('adminlte3/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('fullcalendar/dist/index.global.js') }}"></script>
 
     {{-- BUANG ARROW SEKAT INPUT NUMBER --}}
     <style>
