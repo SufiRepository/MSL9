@@ -31,6 +31,9 @@
 <!-- daterangepicker -->
 <script src="{{ URL::asset('adminlte3/plugins/moment/moment.min.js') }}"></script>
 
+<!-- jQuery UI -->
+<script src="{{ URL::asset('adminlte3/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
 <script src="{{ URL::asset('adminlte3/plugins/daterangepicker/daterangepicker.js') }}"></script>
 <!-- Tempusdominus Bootstrap 4 -->
 <script src="{{ URL::asset('adminlte3/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js') }}">

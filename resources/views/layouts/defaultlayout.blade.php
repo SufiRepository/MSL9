@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'MSL9') }}</title>
+    <link rel="shortcut icon" href="{{ url('images/anylogo.png') }}">
 
     <!-- Fonts -->
     {{-- <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap"> --}}
@@ -40,12 +41,16 @@
         href="{{ URL::asset('adminlte3/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}" />
     <link rel="stylesheet"
         href="{{ URL::asset('adminlte3/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}" />
+    <!-- fullCalendar -->
+    <link rel="stylesheet" href="{{ URL::asset('adminlte3/plugins/fullcalendar/main.css') }}">
 
     {{-- page level css --}}
     @stack('css')
 
     <script src="{{ URL::asset('adminlte3/jquery.min.js') }}"></script>
-    <script src="{{ URL::asset('fullcalendar/dist/index.global.js') }}"></script>
+    {{-- <script src="{{ URL::asset('fullcalendar/dist/index.global.js') }}"></script> --}}
+    <script src="{{ URL::asset('adminlte3/plugins/fullcalendar/main.js') }}"></script>
+
 
     {{-- BUANG ARROW SEKAT INPUT NUMBER --}}
     <style>
