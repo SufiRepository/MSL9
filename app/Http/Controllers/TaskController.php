@@ -63,7 +63,9 @@ class TaskController extends Controller
         $newTask -> description           = $request->input('taskdescription');
         $newTask -> status                = $request->input('taskstatus');
         $newTask -> project_id            = $request->input('project_id');
-     
+        $newTask -> start_date                = $request->input('start_date');
+        $newTask -> end_date            = $request->input('end_date');
+
         $newTask->save();
         //add
         $newTask->users()->attach(Auth::user());

@@ -18,7 +18,7 @@
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ URL::asset('adminlte3/plugins/fontawesome-free/css/all.min.css') }}" />
-    <!-- Tempusdominus Bootstrap 4 -->
+    <!-- Tempusdominus Bootstrap 4 Time Picker-->
     <link rel="stylesheet"
         href="{{ URL::asset('adminlte3/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}" />
     <!-- iCheck -->
