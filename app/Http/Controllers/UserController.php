@@ -15,7 +15,9 @@ use DB;
 
 //model
 use App\Models\User;
-use App\Models\Pasukan;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Imports\ImportUser;
+use App\Exports\ExportUser;
 use App\Models\Profile;
 use Carbon\Carbon;
 

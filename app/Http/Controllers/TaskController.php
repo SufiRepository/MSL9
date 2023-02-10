@@ -62,6 +62,7 @@ class TaskController extends Controller
         $newTask -> name                  = $request->input('taskname');
         $newTask -> description           = $request->input('taskdescription');
         $newTask -> status                = $request->input('taskstatus');
+        $newTask -> parent_id               = $request->input('parent_task_id');
         $newTask -> project_id            = $request->input('project_id');
         $newTask -> start_date                = $request->input('start_date');
         $newTask -> end_date            = $request->input('end_date');
@@ -99,9 +100,10 @@ class TaskController extends Controller
     {
         //
         $task = Task::find($id);
+        $tasks = Task::all();
         $projects = Project::all();
         //dd($project);
-        return view('tasks.edit',compact('task','projects'));
+        return view('tasks.edit',compact('task','tasks','projects'));
     }
 
     /**
@@ -114,18 +116,17 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $updateproject = Task::find($id);
-        $updateproject -> name                  = $request->input('projectname');
-        $updateproject -> description           = $request->input('projectdescription');
-        $updateproject -> status                = $request->input('projectstatus');
-        $updateproject -> client_company              = $request->input('clientcompany');
-        $updateproject -> project_leader              = $request->input('projectleader');
-        $updateproject -> estimated_budget    = $request->input('estimatedbudget');
-        $updateproject -> spent_budget        = $request->input('spentbudget');
-        $updateproject -> project_duration      = $request->input('projectduration');
-        $updateproject->update();
+        $updateTask = Task::find($id);
+        $updateTask -> name                  = $request->input('taskname');
+        $updateTask -> description           = $request->input('taskdescription');
+        $updateTask -> status                = $request->input('taskstatus');
+        $updateTask -> parent_id               = $request->input('parent_task_id');
+        $updateTask -> project_id            = $request->input('project_id');
+        $updateTask -> start_date                = $request->input('start_date');
+        $updateTask -> end_date            = $request->input('end_date');
+        $updateTask->update();
         //dd($request);
-        return redirect()->route('tasks.index')->with('success','Project updated successfully');
+        return redirect()->route('tasks.index')->with('success','Task updated successfully');
     }
 
     /**

@@ -75,6 +75,18 @@
                     </div>
                     <div class="form-group">
                         <label>Projects</label>
+                        <select class="form-control custom-select" name="parent_task_id" style="width: 100%"
+                            id="parent_task_id">
+                            <option selected disabled>Select one</option>
+                            @foreach ($tasks as $tasklist)
+                                <option
+                                    value="{{ $task->id }}"{{ $tasklist->id == $task->parent_id ? 'selected' : '' }}>
+                                    {{ $tasklist->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Projects</label>
                         <select class="form-control custom-select" name="project_id" style="width: 100%" id="project_id">
                             <option selected disabled>Select one</option>
                             @foreach ($projects as $project)

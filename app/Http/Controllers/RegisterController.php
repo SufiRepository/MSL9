@@ -10,10 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use DB;
 //model
-use App\Models\Pasukan;
 use App\Models\Status;
-use App\Models\Jawatan;
-use App\Models\Pangkat;
 use App\Models\Profile;
 use Carbon\Carbon;
 
@@ -40,11 +37,6 @@ class RegisterController extends Controller
             't_lahir' => ['required'],
             'jantina' => ['required'],
             'no_phone' => ['required'],
-            'pasukan_id' => ['required'],
-            // 'pangkat_id' => ['required'],
-            'agama_id' => ['required'],
-            'jawatan_id' => ['required'],
-            'bangsa_id' => ['required'],
             'kategori_id' => ['required'],
             'status_anggota' => ['required'],
             's_kahwin' => ['required'],
