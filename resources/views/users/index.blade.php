@@ -32,8 +32,6 @@
 
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-success" href="{{ route('users.create') }}">Create User</a>
-            <a class="btn btn-success" href="{{ route('export-users') }}">Export Users</a>
             <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group mb-4">
@@ -42,7 +40,10 @@
                         <label class="custom-file-label" for="customFile">Choose file</label>
                     </div>
                 </div>
-                <button class="btn btn-primary">Import Users</button>
+                <a class="btn btn-success" href="{{ route('users.create') }}">Create User</a>
+
+                <button class="btn btn-primary">Import CSV Users</button>
+                <a class="btn btn-success" href="{{ route('export-users') }}">Export CSV Users</a>
             </form>
         </div>
         <!-- /.card-header -->
