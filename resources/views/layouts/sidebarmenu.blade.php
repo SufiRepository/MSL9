@@ -63,5 +63,12 @@
                 <p>CALENDAR</p>
             </a>
         </li>
+        {{-- Resources --}}
+        <li class="nav-item">
+            <a href="{{ route('userscsv') }}" class="nav-link">
+                <i class="far fa-circle nav-icon"></i>
+                <p>USERS FROM CSV</p>
+            </a>
+        </li>
     </ul>
 </nav>

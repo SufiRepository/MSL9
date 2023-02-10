@@ -33,6 +33,17 @@
     <div class="card">
         <div class="card-header">
             <a class="btn btn-success" href="{{ route('users.create') }}">Create User</a>
+            <a class="btn btn-success" href="{{ route('export-users') }}">Export Users</a>
+            <form action="{{ route('import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <div class="form-group mb-4">
+                    <div class="custom-file text-left">
+                        <input type="file" name="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Import Users</button>
+            </form>
         </div>
         <!-- /.card-header -->
         <div class="card-body">
@@ -57,7 +68,8 @@
                             <td>
                                 <button type="button" class="btn btn-secondary" data-toggle="modal"
                                     data-target="#StatusAkaunCenter{{ $user->id }}" data-id="{{ $user->id }}">
-                                    <img src="{{ url('/images/edit.png') }}" width="17" height="17" alt="Image" />
+                                    <img src="{{ url('/images/edit.png') }}" width="17" height="17"
+                                        alt="Image" />
                                 </button>
                                 {{ $user->acc_status }}
                                 <!-- Modal -->
@@ -119,7 +131,8 @@
                                         <div class="modal-dialog modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                                 <div class="modal-header">
-                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Delete Account</h5>
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Delete Account
+                                                    </h5>
                                                     <button type="button" class="close" data-dismiss="modal"
                                                         aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>

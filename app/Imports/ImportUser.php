@@ -15,9 +15,10 @@ class ImportUser implements ToModel
     public function model(array $row)
     {
         return new User([
-            'name' => $row[0],
-            'email' => $row[1],
-            'password' => bcrypt($row[2]),
+            'id' => $row[0],
+            'name' => $row[1],
+            'email' => $row[2],
+            // 'password' => bcrypt($row[2]),
         ]);
     }
 }

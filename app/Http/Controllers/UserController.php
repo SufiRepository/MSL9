@@ -241,85 +241,29 @@ class UserController extends Controller
 
     }
 
-    public function byFilter($id)
-    {
-        // dd($id);
-        if($id === "Arkib"){
-            $data = User::onlyTrashed()
-            ->join('profiles', 'users.id', '=', 'profiles.user_id')
-            ->select('users.*','profiles.pasukan_id')
-            ->get();
-
-            // dd($data);
-            $pasukandata = DB::table('og_unit')->get();
-            for ($x = 0; $x < count($data); $x++)
-            {
-                for ($y = 0; $y < count($pasukandata); $y++){
-                    if($data[$x]->pasukan_id == $pasukandata[$y]->id){
-                        $data[$x]->pasukan_id = $pasukandata[$y]->singkatan;
-                    }
-                }
-            }
-            return view('users.archive',compact('data'));
-
-        }
-        else if($id === "Pendaftaran Baru"){
-            $data = User::orderBy('id','DESC')
-            ->join('profiles', 'users.id', '=', 'profiles.user_id')
-            ->select('users.*','profiles.pasukan_id')
-            ->where('email_verified_at','=',NULL)
-            ->get();
-            $pasukandata = DB::table('og_unit')->get();
-            for ($x = 0; $x < count($data); $x++)
-            {
-                for ($y = 0; $y < count($pasukandata); $y++){
-                    if($data[$x]->pasukan_id == $pasukandata[$y]->id){
-                        $data[$x]->pasukan_id = $pasukandata[$y]->singkatan;
-                    }
-                }
-            }
-            return view('users.index',compact('data'));
-        }
-        else if($id === "Semua"){
-            $data = User::orderBy('id','DESC')
-            ->join('profiles', 'users.id', '=', 'profiles.user_id')
-            ->select('users.*','profiles.pasukan_id')
-            ->where('deleted_at','=',NULL)
-            ->get();
-            return view('users.index',compact('data'));
-        }else{
-            $data = User::orderBy('id','DESC')
-            ->join('profiles', 'users.id', '=', 'profiles.user_id')
-            ->select('users.*','profiles.pasukan_id')
-            ->where('users.status_akaun',$id)
-            ->get();
-
-            return view('users.index',compact('data'));
-        }
+    public function importView(Request $request){
+        return view('importFile');
     }
 
-    public function archiveshow($id)
-    {
-        // $user = User::find($id);
-        $user = User::where('id',$id)->withTrashed()->first();
-        $profile = DB::table('profiles')->where("user_id",$id)->first();
-        $pasukan = DB::table('og_unit')->where("id",$profile->pasukan_id)->first();
-        $pangkat = DB::table('pangkat')->where("id_pangkat",$profile->pangkat_id)->first();
-        $taraf_kahwin = DB::table('lib_taraf_kahwin')->where("idTarafKahwin",$profile->taraf_kahwin)->first();
-        $agama = DB::table('lib_agama')->where("idAgama",$profile->agama_id)->first();
-        $jawatan = DB::table('lib_jawatan')->where("id",$profile->jawatan_id)->first();
+    public function import(Request $request){
+        Excel::import(new ImportUser, $request->file('file')->store('files'));
 
-         //dd($profile);
-
-        return view('users.show',compact(
-                'user',
-                'profile',
-                'pasukan',
-                'pangkat',
-                'taraf_kahwin',
-                'agama',
-                'jawatan',
-            ));
+        return redirect()->back()->with('success','Import User successful.');;
     }
 
+    public function exportUsers(Request $request){
+        return Excel::download(new ExportUser, 'users.csv');
+    }
+
+    public function userscsv(){
+        $file = storage_path('app/files/users.csv');
+
+        if (!file_exists($file)) {
+            return redirect()->back()->with('error', 'File not found');
+        }
+
+        $rows = array_map('str_getcsv', file($file));
+
+        return view('users.userscsv', compact('rows'));
+    }
 }
