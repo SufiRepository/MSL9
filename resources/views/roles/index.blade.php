@@ -112,8 +112,7 @@
             $("#example1").DataTable({
                 "responsive": true,
                 "lengthChange": false,
-                "autoWidth": true,
-                "buttons": ["csv", "pdf"]
+                "autoWidth": true
             }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
         });
     </script>
