@@ -59,6 +59,17 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label>Team Members</label>
+                            <select class="select2" multiple="multiple" data-placeholder="Select Roles" name="users_id[]"
+                                style="width: 100%" id="users_id">
+                                @foreach ($users as $user)
+                                    <option
+                                        value="{{ $user->id }}"{{ $project->users->contains($user) ? 'selected' : '' }}>
+                                        {{ $user->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <label for="inputClientCompany">Client Company</label>
                             <input type="text" id="inputClientCompany" name="clientcompany" class="form-control"
                                 value="{{ $project->client_company }}">

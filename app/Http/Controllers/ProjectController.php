@@ -98,8 +98,11 @@ class ProjectController extends Controller
     {
         //
         $project = Project::find($id);
-        // dd($project);
-        return view('projects.edit',compact('project'));
+        $projectusers = $project->users();
+        $users = User::all();
+
+        //dd($projectusers);
+        return view('projects.edit',compact('project','projectusers','users'));
     }
 
     /**
@@ -121,7 +124,11 @@ class ProjectController extends Controller
         $updateproject -> estimated_budget    = $request->input('estimatedbudget');
         $updateproject -> spent_budget        = $request->input('spentbudget');
         $updateproject -> project_duration      = $request->input('projectduration');
+
         $updateproject->update();
+
+        $updateproject->users()->detach();
+        $updateproject->users()->attach($request->input('users_id'));
         //dd($request);
         return redirect()->route('projects.index')->with('success','Project updated successfully');
     }

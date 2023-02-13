@@ -144,5 +144,10 @@ class TaskController extends Controller
         return redirect()->route('tasks.index')
                     ->with('success','Project deleted successfully');
     }
-
+    
+    public function getTasks()
+    {
+        $tasks = Task::all();
+        return response()->json($tasks);
+    }
 }
