@@ -6,12 +6,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Show Peranan</h1>
+                    <h1 class="m-0">Show Roles</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Peranan</a></li>
+                        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Roles</a></li>
                         <li class="breadcrumb-item active">Show</li>
                     </ol>
                 </div><!-- /.col -->
@@ -25,7 +25,7 @@
     <div class="container-fluid">
         <div class="card card-default">
             <div class="card-header">
-                <h3 class="card-title">Peranan</h3>
+                <h3 class="card-title">Roles</h3>
             </div>
             <div class="card-body">
                 <div class="row">
