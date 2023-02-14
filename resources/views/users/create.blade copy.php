@@ -147,8 +147,8 @@
                   <input type="password" class="form-control" name="password" id="password" placeholder="Katalaluan">
                 </div>
                 <div class="form-group">
-                  <label>Sahkan Katalaluan</label>
-                  <input type="password" class="form-control" name="confirm-password" id="confirm-password" placeholder="Sahkan Katalaluan">
+                  <label>Confirm Katalaluan</label>
+                  <input type="password" class="form-control" name="confirm-password" id="confirm-password" placeholder="Confirm Katalaluan">
                 </div>
               </div>
               <!-- /.col -->
