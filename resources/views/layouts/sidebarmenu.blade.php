@@ -34,28 +34,28 @@
 
         {{-- Projects --}}
         <li class="nav-item">
-            <a href="{{ route('projects.index') }}" class="nav-link">
+            <a href="{{ route('projects.index') }}" class="nav-link {{ Request::is('projects*') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>PROJECTS</p>
             </a>
         </li>
         {{-- Tasks --}}
         <li class="nav-item">
-            <a href="{{ route('tasks.index') }}" class="nav-link">
+            <a href="{{ route('tasks.index') }}" class="nav-link {{ Request::is('tasks*') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>TASKS</p>
             </a>
         </li>
         {{-- Resources --}}
         <li class="nav-item">
-            <a href="{{ route('resources.index') }}" class="nav-link">
+            <a href="{{ route('resources.index') }}" class="nav-link {{ Request::is('resources*') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>RESOURCES</p>
             </a>
         </li>
         {{-- Resources --}}
         <li class="nav-item">
-            <a href="{{ route('calendars.index') }}" class="nav-link">
+            <a href="{{ route('calendars.index') }}" class="nav-link {{ Request::is('calendars*') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>CALENDAR</p>
             </a>
