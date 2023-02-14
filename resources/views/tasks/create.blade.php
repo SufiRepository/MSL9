@@ -65,8 +65,20 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Task status</label>
-                                <input type="text" class="form-control" name="taskstatus" id="taskstatus"
-                                    placeholder="Status">
+                                <select class="form-control custom-select" id="taskstatus" name="taskstatus">
+                                    <option value="To Do">To Do
+                                    </option>
+                                    <option value="In Progress">
+                                        In Progress</option>
+                                    <option value="Completed">
+                                        Completed</option>
+                                    <option value="On Hold">
+                                        On Hold</option>
+                                    <option value="Cancelled">
+                                        Cancelled</option>
+                                    <option value="Overdue">
+                                        Overdue</option>
+                                </select>
                             </div>
                         </div>
                     </div>

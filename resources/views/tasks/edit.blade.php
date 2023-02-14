@@ -68,8 +68,26 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Task status</label>
-                                <input type="text" class="form-control" name="taskstatus" id="taskstatus"
-                                    placeholder="Status" value="{{ $task->status }}">
+                                <select class="form-control" id="taskstatus" name="taskstatus">
+                                    <option value="To Do"
+                                        {{ old('status') == 'To Do' || $task->status == 'To Do' ? 'selected' : '' }}>To Do
+                                    </option>
+                                    <option value="In Progress"
+                                        {{ old('status') == 'In Progress' || $task->status == 'In Progress' ? 'selected' : '' }}>
+                                        In Progress</option>
+                                    <option value="Completed"
+                                        {{ old('status') == 'Completed' || $task->status == 'Completed' ? 'selected' : '' }}>
+                                        Completed</option>
+                                    <option value="On Hold"
+                                        {{ old('status') == 'On Hold' || $task->status == 'On Hold' ? 'selected' : '' }}>
+                                        On Hold</option>
+                                    <option value="Cancelled"
+                                        {{ old('status') == 'Cancelled' || $task->status == 'Cancelled' ? 'selected' : '' }}>
+                                        Cancelled</option>
+                                    <option value="Overdue"
+                                        {{ old('status') == 'Overdue' || $task->status == 'Overdue' ? 'selected' : '' }}>
+                                        Overdue</option>
+                                </select>
                             </div>
                         </div>
                     </div>
