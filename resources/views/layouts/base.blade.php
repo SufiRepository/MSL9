@@ -3,7 +3,7 @@
 
 <head>
     @include('layouts.headpwa')
-    @include('layouts.headlogin')
+    @stack('basehead')
 
 </head>
 
