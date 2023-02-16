@@ -84,6 +84,9 @@
                 <div class="card">
                     <div class="card-header">
                         Project Status
+                        @if ($user->projects->count() > 5)
+                            <a href="{{ url('/projects') }}">Click to go to complete list</a>
+                        @endif
                     </div>
                     <ul class="list-group list-group-flush">
                         @foreach ($user->projects as $project)
@@ -113,6 +116,9 @@
                 <div class="card">
                     <div class="card-header">
                         Task Status
+                        @if ($user->tasks->count() > 5)
+                            <a href="{{ url('/tasks') }}">Click to go to complete list</a>
+                        @endif
                     </div>
                     <ul class="list-group list-group-flush">
                         @foreach ($user->tasks as $task)
