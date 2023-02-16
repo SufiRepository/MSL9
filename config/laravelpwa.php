@@ -4,7 +4,7 @@ return [
     'name' => 'MSL9',
     'manifest' => [
         'name' => env('APP_NAME', 'My PWA App'),
-        'short_name' => 'PWA',
+        'short_name' => 'MSL9',
         'start_url' => '/',
         'background_color' => '#ffffff',
         'theme_color' => '#000000',
