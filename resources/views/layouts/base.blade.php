@@ -3,8 +3,11 @@
 
 <head>
     @include('layouts.headpwa')
+    @include('layouts.headlogin')
+
 </head>
 
+@include('layout.loginbody')
 
 
 </html>
