@@ -27,9 +27,9 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::get('/offline', function () {
-    return view('modules/laravelpwa/offline');    
-});
+// Route::get('/offline', function () {
+//     return view('modules/laravelpwa/offline');    
+// });
     
 Route::get('/dashboard',  [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
