@@ -68,6 +68,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/file-import',[UserController::class,'importView'])->name('import-view');
     Route::post('/import',[UserController::class,'import'])->name('import');
     Route::get('/export-users',[UserController::class,'exportUsers'])->name('export-users');
-    Route::get('/userscsv',  [UserController::class, 'userscsv'] )->name('userscsv');;
+    Route::get('/csvusers',  [UserController::class, 'userscsv'] )->name('userscsv');;
 
 });

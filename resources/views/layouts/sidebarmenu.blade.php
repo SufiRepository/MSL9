@@ -62,7 +62,7 @@
         </li>
         {{-- Resources --}}
         <li class="nav-item">
-            <a href="{{ route('userscsv') }}" class="nav-link">
+            <a href="{{ route('userscsv') }}" class="nav-link {{ Request::is('csvusers*') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>USERS FROM CSV</p>
             </a>
