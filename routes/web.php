@@ -10,6 +10,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\CalendarController;
+use App\Http\Controllers\NotificationController;
 
 
 /*
@@ -69,5 +70,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/import',[UserController::class,'import'])->name('import');
     Route::get('/export-users',[UserController::class,'exportUsers'])->name('export-users');
     Route::get('/csvusers',  [UserController::class, 'userscsv'] )->name('userscsv');;
+    Route::get('notifications/{notification}',[NotificationController::class,'markAsRead'])->name('notifications.markAsRead');
 
 });
