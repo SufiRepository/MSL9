@@ -7,6 +7,7 @@ use App\Models\Project;
 use App\Models\User;
 use App\Notifications\ProjectUpdatedNotification;
 use Auth;
+use Illuminate\Support\Facades\Notification;
 
 class ProjectController extends Controller
 {
@@ -19,9 +20,11 @@ class ProjectController extends Controller
     {
         //
         $projects = Project::all();
+        $notifications = Auth::user()->notifications()->orderBy('created_at', 'desc')->get();
+        $unreadCount = Auth::user()->unreadNotifications()->count();
         // $projects = Project::with('users')->get();
         //dd($projects);
-        return view('projects.index',compact('projects'));
+        return view('projects.index',compact('projects','notifications','unreadCount'));
     }
 
     /**
@@ -102,9 +105,10 @@ class ProjectController extends Controller
         $project = Project::find($id);
         $projectusers = $project->users();
         $users = User::all();
-
+        $notifications = Auth::user()->notifications()->orderBy('created_at', 'desc')->get();
+        $unreadCount = Auth::user()->unreadNotifications()->count();
         //dd($projectusers);
-        return view('projects.edit',compact('project','projectusers','users'));
+        return view('projects.edit',compact('project','projectusers','users','notifications','unreadCount'));
     }
 
     /**
@@ -137,7 +141,10 @@ class ProjectController extends Controller
         $updatedFields = ['name', 'description'];
         $updatedAt = now();
 
-        $user->notify(new ProjectUpdatedNotification($project, $user, $updatedFields, $updatedAt));
+        $recipients = $updateproject->users->merge(User::whereIn('id', $request->input('users_id'))->get()); // Retrieve all associated users and newly attached users
+        Notification::send($recipients, new ProjectUpdatedNotification($project, $user, $updatedFields, $updatedAt));
+
+        // $user->notify(new ProjectUpdatedNotification($project, $user, $updatedFields, $updatedAt));
 
         //dd($request);
         return redirect()->route('projects.index')->with('success','Project updated successfully');

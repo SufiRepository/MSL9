@@ -12,7 +12,7 @@ use Spatie\Permission\Models\Permission;
 
 use Hash;
 use DB;
-
+use Auth;
 //model
 use App\Models\User;
 use Maatwebsite\Excel\Facades\Excel;
@@ -35,7 +35,10 @@ class UserController extends Controller
             ->get();
         // dd($data);
         $navlink = array('pengurusan_pengguna','pengguna');
-        return view('users.index',compact('data'));
+        $notifications = Auth::user()->notifications()->orderBy('created_at', 'desc')->get();
+        $unreadCount = Auth::user()->unreadNotifications()->count();
+
+        return view('users.index',compact('data','notifications','unreadCount'));
     }
 
     /**
@@ -137,9 +140,10 @@ class UserController extends Controller
         $profile = DB::table('profiles')->where('user_id','=',$id)->first();
         $roles   = Role::all();
         $myroles = $user->getRoleNames();
+        $notifications = Auth::user()->notifications()->orderBy('created_at', 'desc')->get();
+        $unreadCount = Auth::user()->unreadNotifications()->count();
 
-
-        return view('users.edit',compact('user','profile','roles','myroles'));
+        return view('users.edit',compact('user','profile','roles','myroles','notifications','unreadCount'));
 
     }
 

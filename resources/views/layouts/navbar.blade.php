@@ -101,35 +101,37 @@
             </div>
         </li>
         <!-- Notifications Dropdown Menu -->
-        <li class="nav-item dropdown">
-            <a class="nav-link" data-toggle="dropdown" href="#">
-                <i class="far fa-bell"></i>
-                <span class="badge badge-warning navbar-badge">{{ $unreadCount }}</span>
-            </a>
-            <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                <span class="dropdown-item dropdown-header">{{ $notifications->count() }} Notifications</span>
-                <div class="dropdown-divider"></div>
-                @foreach ($notifications as $notification)
-                    <a href="{{ route('notifications.markAsRead', $notification->id) }}" class="dropdown-item">
-                        <i class="fas fa-envelope mr-2"></i> {{ $notification->data['message'] }}
-                        <span
-                            class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
-                    </a>
+        @if (request()->url() == url('/dashboard'))
+            <li class="nav-item dropdown">
+                <a class="nav-link" data-toggle="dropdown" href="#">
+                    <i class="far fa-bell"></i>
+                    <span class="badge badge-warning navbar-badge">{{ $unreadCount }}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <span class="dropdown-item dropdown-header">{{ $notifications->count() }} Read Notifications</span>
                     <div class="dropdown-divider"></div>
-                @endforeach
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-users mr-2"></i> 8 friend requests
-                    <span class="float-right text-muted text-sm">12 hours</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item">
-                    <i class="fas fa-file mr-2"></i> 3 new reports
-                    <span class="float-right text-muted text-sm">2 days</span>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
-            </div>
-        </li>
+                    @if ($unreadCount > 0)
+                        @foreach ($notifications as $notification)
+                            @if (!$notification->read_at)
+                                <a href="{{ route('notifications.markAsRead', $notification->id) }}"
+                                    class="dropdown-item">
+                                    <i class="fas fa-envelope mr-2"></i> {{ $notification->data['message'] }}
+                                    <span
+                                        class="float-right text-muted text-sm">{{ $notification->created_at->diffForHumans() }}</span>
+                                </a>
+                                <div class="dropdown-divider"></div>
+                            @endif
+                        @endforeach
+                    @else
+                        <a href="#" class="dropdown-item">
+                            <i class="fas fa-info-circle mr-2"></i> No new notifications
+                            <span class="float-right text-muted text-sm"></span>
+                        </a>
+                    @endif
+                    <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                </div>
+            </li>
+        @endif
         <li class="nav-item">
             <a class="nav-link" data-widget="fullscreen" href="#" role="button">
                 <i class="fas fa-expand-arrows-alt"></i>

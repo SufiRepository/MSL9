@@ -56,7 +56,7 @@ class ProjectUpdatedNotification extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'message' => 'The project has been updated.',
+            'message' => 'A project has been updated.',
             'project_id' => $this->project->id,
             'user_id' => $this->user->id,
             'updated_fields' => $this->updatedFields,
