@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\User;
+use App\Notifications\ProjectUpdatedNotification;
+use Auth;
 
 class ProjectController extends Controller
 {
@@ -129,6 +131,14 @@ class ProjectController extends Controller
 
         $updateproject->users()->detach();
         $updateproject->users()->attach($request->input('users_id'));
+
+        $user = Auth::user();
+        $project = $updateproject;
+        $updatedFields = ['name', 'description'];
+        $updatedAt = now();
+
+        $user->notify(new ProjectUpdatedNotification($project, $user, $updatedFields, $updatedAt));
+
         //dd($request);
         return redirect()->route('projects.index')->with('success','Project updated successfully');
     }
