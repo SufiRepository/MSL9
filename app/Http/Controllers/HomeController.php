@@ -30,7 +30,9 @@ class HomeController extends Controller
         $notifications = Auth::user()->notifications()->orderBy('created_at', 'desc')->get();
         $unreadCount = Auth::user()->unreadNotifications()->count();
 
-        return view('dashboard', compact('user','notifications','unreadCount'));
+        // return view('dashboard', compact('user','notifications','unreadCount'));
+
+        return view('dashboard', compact('user'));
     }
 
     public function dashbord()
