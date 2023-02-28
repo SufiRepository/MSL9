@@ -72,5 +72,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/export-users',[UserController::class,'exportUsers'])->name('export-users');
     Route::get('/csvusers',  [UserController::class, 'userscsv'] )->name('userscsv');;
     Route::get('notifications/{notification}',[NotificationController::class,'markAsRead'])->name('notifications.markAsRead');
+    Route::delete('notificationsdelete/{id}',[NotificationController::class,'deleteNotification'])->name('notifications.deleteNotification');
 
 });
