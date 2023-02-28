@@ -127,7 +127,8 @@
                         <span class="float-right text-muted text-sm"></span>
                     </a>
                 @endif
-                <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+                <a href="{{ route('notifications.index') }}" class="dropdown-item dropdown-footer">See All
+                    Notifications</a>
             </div>
         </li>
         {{-- @endif --}}

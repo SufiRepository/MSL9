@@ -26,8 +26,13 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', function ($view) {
-            $notifications = Auth::user()->notifications()->orderBy('created_at', 'desc')->get();
-            $unreadCount = Auth::user()->unreadNotifications()->count();
+            if (Auth::check()) {
+                $notifications = Auth::user()->notifications()->orderBy('created_at', 'desc')->get();
+                $unreadCount = Auth::user()->unreadNotifications()->count();
+            } else {
+                $notifications = [];
+                $unreadCount = 0;
+            }
 
             $view->with([
                 'notifications' => $notifications,

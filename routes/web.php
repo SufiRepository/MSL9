@@ -49,6 +49,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('resources', ResourceController::class);
     Route::resource('permissions', PermissionController::class);
     Route::resource('calendars', CalendarController::class);
+    Route::resource('notifications', NotificationController::class);
     Route::get('/tasklist',  [TaskController::class, 'tasklist'] );
 
     Route::get('/dashboard/view/{id}',  [HomeController::class, 'carian'] )->name('carian');
