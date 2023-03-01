@@ -16,6 +16,12 @@ use Carbon\Carbon;
 
 class RegisterController extends Controller
 {
+    public function getregister(){
+
+        return view('auth/register');
+
+    }
+
     public function store(Request $request)
     {
         // dd($request);

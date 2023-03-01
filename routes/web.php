@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PermissionController;
@@ -27,17 +28,17 @@ use App\Http\Controllers\NotificationController;
 Route::get('/', function () {
     return view('auth/login');
 });
-
+Route::post('/newlogin',  [LoginController::class, 'authenticate'])->name('newlogin');
+Route::get('/getregister',  [RegisterController::class, 'getregister'])->name('getregister');
+//Route::get('/registersuccess',  [NewRegisterController::class, 'registersuccess'])->name('registersuccess');
+//Route::get('/contactadmin',  [NewRegisterController::class, 'contactadmin'])->name('contactadmin');
 // Route::get('/offline', function () {
 //     return view('modules/laravelpwa/offline');    
 // });
     
 Route::get('/dashboard',  [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-Route::post('/newlogin',  [LoginController::class, 'authenticate'])->name('newlogin');
-//Route::post('/newregister',  [NewRegisterController::class, 'store'])->name('newregister');
-//Route::get('/registersuccess',  [NewRegisterController::class, 'registersuccess'])->name('registersuccess');
-//Route::get('/contactadmin',  [NewRegisterController::class, 'contactadmin'])->name('contactadmin');
+
 Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function() {
@@ -64,8 +65,6 @@ Route::group(['middleware' => ['auth']], function() {
 
     //pasukan edit tak function, jadi ni ganti untuk route pasukan edit
     Route::get('/pasukan/edit/{id}',     [Pasukancontroller::class, 'edit'] ) ->name('pasukanedit');
-
-  
 
     Route::get('/file-import',[UserController::class,'importView'])->name('import-view');
     Route::post('/import',[UserController::class,'import'])->name('import');
