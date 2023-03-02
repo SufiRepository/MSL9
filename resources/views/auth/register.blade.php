@@ -27,7 +27,7 @@
 <body class="hold-transition register-page register-background">
     <div class="register-box">
         <div class="register-logo">
-            <a href="" style="color: white;"><b>MSL9</b>V1</a>
+            <a href="/" style="color: white;"><b>MSL9</b>V1</a>
         </div>
 
         <div class="card">

@@ -30,6 +30,7 @@ Route::get('/', function () {
 });
 Route::post('/newlogin',  [LoginController::class, 'authenticate'])->name('newlogin');
 Route::get('/getregister',  [RegisterController::class, 'getregister'])->name('getregister');
+Route::get('/getforgotpassword',  [RegisterController::class, 'getforgotpassword'])->name('getforgotpassword');
 //Route::get('/registersuccess',  [NewRegisterController::class, 'registersuccess'])->name('registersuccess');
 //Route::get('/contactadmin',  [NewRegisterController::class, 'contactadmin'])->name('contactadmin');
 // Route::get('/offline', function () {

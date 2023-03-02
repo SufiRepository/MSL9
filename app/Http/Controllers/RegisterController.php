@@ -22,6 +22,12 @@ class RegisterController extends Controller
 
     }
 
+    public function getforgotpassword(){
+
+        return view('auth/reset-password');
+
+    }
+
     public function store(Request $request)
     {
         // dd($request);
