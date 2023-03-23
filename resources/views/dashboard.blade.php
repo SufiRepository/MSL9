@@ -1,7 +1,16 @@
 @extends('layouts.defaultlayout')
 
 @push('css')
+    <style>
+        .list-group {
+            max-height: 15em;
+            margin-bottom: 10px;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
 @endpush
+
 @section('contentheader')
     <!-- Content Header (Page header) -->
     <div class="content-header">

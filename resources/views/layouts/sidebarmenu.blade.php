@@ -53,7 +53,7 @@
                 <p>RESOURCES</p>
             </a>
         </li>
-        {{-- Resources --}}
+        {{-- CALENDAR --}}
         <li class="nav-item">
             <a href="{{ route('calendars.index') }}" class="nav-link {{ Request::is('calendars*') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
@@ -65,6 +65,14 @@
             <a href="{{ route('userscsv') }}" class="nav-link {{ Request::is('csvusers*') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>USERS FROM CSV</p>
+            </a>
+        </li>
+        {{-- Resources --}}
+        <li class="nav-item">
+            <a href="{{ route('notifications.index') }}"
+                class="nav-link {{ Request::is('notifications*') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>NOTIFICATIONS</p>
             </a>
         </li>
     </ul>
