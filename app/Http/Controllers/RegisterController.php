@@ -17,15 +17,11 @@ use Carbon\Carbon;
 class RegisterController extends Controller
 {
     public function getregister(){
-
         return view('auth/register');
-
     }
 
     public function getforgotpassword(){
-
         return view('auth/reset-password');
-
     }
 
     public function store(Request $request)
@@ -52,7 +48,6 @@ class RegisterController extends Controller
             'kategori_id' => ['required'],
             'status_anggota' => ['required'],
             's_kahwin' => ['required'],
-
         ]);
 
         //maklumat untuk login
@@ -98,9 +93,7 @@ class RegisterController extends Controller
         $newprofile->save();
 
         //$newUser->assignRole($request->input('roles'));
-
         //event(new Registered($newUser));
-
         //Auth::login($newUser);
 
         return view('auth/registersuccess');

@@ -126,6 +126,15 @@ class TaskController extends Controller
         $updateTask -> end_date            = $request->input('end_date');
         $updateTask->update();
         //dd($request);
+
+        $user = Auth::user();
+        $task = $updateTask;
+        $updatedFields = ['name', 'description'];
+        $updatedAt = now();
+
+        $recipients = $updateTask ->users->merge(User::whereIn('id', $request->input('users_id'))->get()); // Retrieve all associated users and newly attached users
+        Notification::send($recipients, new TaskUpdatedNotification($task, $user, $updatedFields, $updatedAt));
+
         return redirect()->route('tasks.index')->with('success','Task updated successfully');
     }
 
