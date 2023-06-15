@@ -31,7 +31,7 @@ class RegisterController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required',
-            'terms' => 'accepted'
+            'agreeTerms' => 'accepted'
         ]);
     
         $user = User::create([

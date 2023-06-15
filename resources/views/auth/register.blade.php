@@ -47,6 +47,16 @@
                         @error('fullname')
                             <span class="invalid-feedback">{{ $message }}</span>
                         @enderror
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </div>
                     <div class="input-group mb-3">
                         <input type="email" class="form-control @error('email') is-invalid @enderror" name="email"
@@ -87,7 +97,7 @@
                     <div class="row">
                         <div class="col-8">
                             <div class="icheck-primary @error('terms') is-invalid @enderror">
-                                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                                <input type="checkbox" id="agreeTerms" name="agreeTerms" value="accepted">
                                 <label for="agreeTerms">
                                     I agree to the <a href="#" data-toggle="modal"
                                         data-target="#termsModal">terms</a>

@@ -31,6 +31,11 @@
             <div class="card-header text-center">
                 <a href="../../index2.html" class="h1"><b>MSL9</b>V1</a>
             </div>
+            @if (session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
             <div class="card-body">
                 <p class="login-box-msg">Sign in to start your session</p>
 
