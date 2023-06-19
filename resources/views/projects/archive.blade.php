@@ -74,11 +74,11 @@
                                 </small> --}}
                             </td>
                             <td>
-                                <!-- @foreach ($project->users as $user)
+                                @foreach ($project->users as $user)
                                     <a href="/users/{{ $user->id }}">
                                         {{ $user->name }},
                                     </a>
-                                @endforeach -->
+                                @endforeach
                             </td>
                             <td class="project_progress">
                                 <div class="progress progress-sm">
