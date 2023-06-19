@@ -165,4 +165,15 @@ class ProjectController extends Controller
         return redirect()->route('projects.index')
                     ->with('success','Project deleted successfully');
     }
+
+    public function indexarchive()
+    {
+        //
+        $projects = Project::onlyTrashed()->get();
+        $notifications = Auth::user()->notifications()->orderBy('created_at', 'desc')->get();
+        $unreadCount = Auth::user()->unreadNotifications()->count();
+        // $projects = Project::with('users')->get();
+        //dd($projects);
+        return view('projects.archive', compact('projects', 'notifications', 'unreadCount'));
+    }
 }

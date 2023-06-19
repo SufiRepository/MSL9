@@ -38,12 +38,13 @@ Route::get('/getforgotpassword',  [RegisterController::class, 'getforgotpassword
 //     return view('modules/laravelpwa/offline');    
 // });
     
-Route::get('/dashboard',  [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
 
 
 Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
     //larevel route
     Route::resource('roles', RoleController::class);
     Route::resource('projects', ProjectController::class);
@@ -74,5 +75,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('/csvusers',  [UserController::class, 'userscsv'] )->name('userscsv');;
     Route::get('notifications/{notification}',[NotificationController::class,'markAsRead'])->name('notifications.markAsRead');
     Route::delete('notificationsdelete/{id}',[NotificationController::class,'deleteNotification'])->name('notifications.deleteNotification');
+
+    Route::get('projectsarchive', [ProjectController::class, 'indexarchive'])->name('archive');
 
 });

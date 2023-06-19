@@ -14,6 +14,8 @@
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">HOME</a></li>
                         <li class="breadcrumb-item active">PROJECTS</li>
+                        <li class="breadcrumb-item"><a href="{{ route('archive') }}">ARCHIVE</a></li>
+                        
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
