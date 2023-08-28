@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name') }}</title>
     <!-- Google Font: Source Sans Pro -->
-    {{-- <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback"> --}}
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ URL::asset('adminlte3/plugins/fontawesome-free/css/all.min.css') }}" />
     <!-- icheck bootstrap -->
@@ -82,17 +80,6 @@
                         <!-- /.col -->
                     </div>
                 </form>
-
-                {{-- <div class="social-auth-links text-center mt-2 mb-3">
-                    <a href="#" class="btn btn-block btn-primary">
-                        <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                        <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-                    </a>
-                </div> --}}
-                <!-- /.social-auth-links -->
-
                 <p class="mb-1">
                     <a href="{{ route('getforgotpassword') }}">I forgot my password</a>
                 </p>
@@ -105,6 +92,18 @@
         <!-- /.card -->
     </div>
     <!-- /.login-box -->
+    <div class="row justify-content-center mt-3">
+
+        <div class="login-box">
+            <div class="card">
+                <div class="card-body text-center">
+                    <p>Apply for housemen placement</p>
+                    <a href="{{ route('getapplicationpage') }}" class="btn btn-success">APPLY</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.apply-box -->
 
     <!-- jQuery -->
     <script src="{{ URL::asset('adminlte3/plugins/jquery/jquery.min.js') }}"></script>

@@ -12,6 +12,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\ApplicationController;
 
 
 /*
@@ -37,11 +38,9 @@ Route::get('/getforgotpassword',  [RegisterController::class, 'getforgotpassword
 // Route::get('/offline', function () {
 //     return view('modules/laravelpwa/offline');    
 // });
+Route::get('/getapplicationpage', [ApplicationController::class, 'getapplicationpage'])->name('getapplicationpage');
     
 Route::get('/dashboard', [HomeController::class, 'index'])->middleware(['auth'])->name('dashboard');
-
-
-
 Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 
 Route::group(['middleware' => ['auth']], function () {
