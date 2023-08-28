@@ -96,6 +96,11 @@
 
         <div class="login-box">
             <div class="card">
+                @if ($errors->has('rate_limit_exceeded'))
+                    <div class="alert alert-danger">
+                        {{ $errors->first('rate_limit_exceeded') }}
+                    </div>
+                @endif
                 <div class="card-body text-center">
                     <p>Apply for housemen placement</p>
                     <a href="{{ route('getapplicationpage') }}" class="btn btn-success">APPLY</a>
