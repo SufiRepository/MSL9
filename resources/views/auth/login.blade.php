@@ -96,14 +96,20 @@
 
         <div class="login-box">
             <div class="card">
-                @if ($errors->has('rate_limit_exceeded'))
-                    <div class="alert alert-danger">
-                        {{ $errors->first('rate_limit_exceeded') }}
+                <div class="card-body">
+                    @if ($errors->has('rate_limit_exceeded'))
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                            {{ $errors->first('rate_limit_exceeded') }}
+                        </div>
+                    @endif
+                    <div class="card-body text-center">
+                        <p>Apply for housemen placement</p>
+                        <a href="{{ route('getapplicationpage') }}" class="btn btn-success">APPLY</a>
                     </div>
-                @endif
-                <div class="card-body text-center">
-                    <p>Apply for housemen placement</p>
-                    <a href="{{ route('getapplicationpage') }}" class="btn btn-success">APPLY</a>
                 </div>
             </div>
         </div>

@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Http\Request;
-use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
 use DB;
 //model
-use App\Models\Status;
-use App\Models\Profile;
+
 use Carbon\Carbon;
 
 class ApplicationController extends Controller
@@ -22,10 +20,10 @@ class ApplicationController extends Controller
         $key = $this->resolveRequestSignature($request);
 
         if (RateLimiter::tooManyAttempts($key, 5)) {
-            return redirect('/')->withErrors(['rate_limit_exceeded' => 'Rate limit exceeded. You can perform this action again after a minute.']);
+            return redirect('/')->withErrors(['rate_limit_exceeded' => 'Rate limit exceeded. You can perform this action again after 2 minute.']);
         }
 
-        RateLimiter::hit($key, 60); // Allow 5 requests per minute
+        RateLimiter::hit($key, 120); // Allow 5 requests per minute
 
         return view('application.firstpage');
     }
