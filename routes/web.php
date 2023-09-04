@@ -13,6 +13,7 @@ use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\GeoMapsController;
 
 
 /*
@@ -53,6 +54,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('permissions', PermissionController::class);
     Route::resource('calendars', CalendarController::class);
     Route::resource('notifications', NotificationController::class);
+    Route::resource('geomaps', GeoMapsController::class);
+
     Route::get('/tasklist',  [TaskController::class, 'tasklist'] );
 
     Route::get('/dashboard/view/{id}',  [HomeController::class, 'carian'] )->name('carian');

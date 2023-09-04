@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Project;
 use App\Models\User;
-use App\Notifications\ProjectUpdatedNotification;
 use Auth;
 use Illuminate\Support\Facades\Notification;
 
@@ -18,6 +16,8 @@ class GeoMapsController extends Controller
     public function index()
     {
         //
+        return view('geomaps.index');
+
     }
 
     /**

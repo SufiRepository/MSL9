@@ -67,12 +67,20 @@
                 <p>USERS FROM CSV</p>
             </a>
         </li>
-        {{-- Resources --}}
+        {{-- Notifications --}}
         <li class="nav-item">
             <a href="{{ route('notifications.index') }}"
                 class="nav-link {{ Request::is('notifications*') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>NOTIFICATIONS</p>
+            </a>
+        </li>
+        {{-- GeoMaps --}}
+        <li class="nav-item">
+            <a href="{{ route('geomaps.index') }}"
+                class="nav-link {{ Request::is('notifications*') ? 'active' : '' }}">
+                <i class="far fa-circle nav-icon"></i>
+                <p>MAPS</p>
             </a>
         </li>
     </ul>

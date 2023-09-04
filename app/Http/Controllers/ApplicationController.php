@@ -19,11 +19,11 @@ class ApplicationController extends Controller
     {
         $key = $this->resolveRequestSignature($request);
 
-        if (RateLimiter::tooManyAttempts($key, 5)) {
+        if (RateLimiter::tooManyAttempts($key, 2)) {
             return redirect('/')->withErrors(['rate_limit_exceeded' => 'Rate limit exceeded. You can perform this action again after 2 minute.']);
         }
 
-        RateLimiter::hit($key, 120); // Allow 5 requests per minute
+        RateLimiter::hit($key, 120); // Allow key number requests per key minute
 
         return view('application.firstpage');
     }
