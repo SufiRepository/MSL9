@@ -40,7 +40,7 @@
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
-                            <label for="inputName">Project Name</label>
+                            <label for="inputName">Project Names</label>
                             <input type="text" id="inputName" name="projectname" class="form-control"
                                 value="{{ $project->name }}">
                         </div>
