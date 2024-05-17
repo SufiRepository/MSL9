@@ -24,6 +24,8 @@ class ProjectController extends Controller
         $unreadCount = Auth::user()->unreadNotifications()->count();
         // $projects = Project::with('users')->get();
         //dd($projects);
+        //logger($projects);
+        //logger($notifications);
         return view('projects.index', compact('projects', 'notifications', 'unreadCount'));
     }
 

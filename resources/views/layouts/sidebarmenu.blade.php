@@ -77,8 +77,7 @@
         </li>
         {{-- GeoMaps --}}
         <li class="nav-item">
-            <a href="{{ route('geomaps.index') }}"
-                class="nav-link {{ Request::is('notifications*') ? 'active' : '' }}">
+            <a href="{{ route('geomaps.index') }}" class="nav-link {{ Request::is('geomaps*') ? 'active' : '' }}">
                 <i class="far fa-circle nav-icon"></i>
                 <p>MAPS</p>
             </a>
